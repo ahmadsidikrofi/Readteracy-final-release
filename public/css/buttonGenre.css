@@ -1,0 +1,55 @@
+/* .buttonGenre {
+    background-color: #eee;
+    border: none;
+    padding: 1rem;
+    font-size: 20px;
+    border-radius: 1rem;
+    color: rgb(65, 65, 65);
+    box-shadow: 0 0.4rem #dfd9d9;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.buttonGenre:active {
+    color: white;
+    box-shadow: 0 0.2rem #dfd9d9;
+    transform: translateY(0.2rem);
+}
+
+.buttonGenre:hover:not(:disabled) {
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    text-shadow: 0 0.1rem #bcb4b4;
+}
+
+.buttonGenre:disabled {
+    cursor: auto;
+    color: grey;
+} */
+
+.buttonGenre {
+    padding: 17px 40px;
+    border-radius: 10px;
+    border: 0;
+    background-color: rgb(78, 78, 78);
+    letter-spacing: 1.5px;
+    font-size: 15px;
+    transition: all .3s ease;
+    box-shadow: rgb(65, 65, 65) 0px 10px 0px 0px;
+    color: hsl(0, 0%, 100%);
+    text-decoration: none;
+}
+
+.buttonGenre:hover {
+    box-shadow: rgb(184, 184, 184) 0px 7px 0px 0px;
+    color: aliceblue;
+}
+
+.buttonGenre:active {
+    background-color: rgb(204, 204, 204);
+    /*50, 168, 80*/
+    box-shadow: rgb(194, 194, 194) 0px 0px 0px 0px;
+    transform: translateY(5px);
+    transition: 200ms;
+    color: aliceblue;
+}
