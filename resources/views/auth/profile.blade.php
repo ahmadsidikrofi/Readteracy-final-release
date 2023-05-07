@@ -148,11 +148,12 @@
                                             </div>
                                             <form action="/Readteracy/return-book" method="post">
                                                 @csrf
-                                                {{-- <input type="text" value="{{ $borrow->id }}" name="id"> --}}
+                                                <input type="hidden" value="{{ $borrow->id }}" name="id">
                                                 <input type="hidden" value="{{ $borrow->user_id }}" name="user_id">
                                                 <input type="hidden" value="{{ $borrow->book_id }}" name="book_id">
                                                 @if ($borrow->tipe === 'Fisik' && $borrow->status === 'dikembalikan')
-                                                    <p class="text-success mt-3 fw-bold fs-5">Sudah dikembalikan</p>
+                                                    {{-- <p class="text-success mt-3 fw-bold fs-5">Sudah dikembalikan</p> --}}
+                                                    <a href="/Readteracy/catalogue" class="btn btn-primary btn-sm mt-3">Pinjam lagi</a>
                                                 @elseif ($borrow->tipe === 'Fisik')
                                                     <button class="btn btn-sm btn-dark mt-3" name="return_book">Return book</button>
                                                 @endif

@@ -9,9 +9,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Document</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-        <link rel="stylesheet" href="/css/theme.min.css">
+        {{-- <link rel="stylesheet" href="/css/theme.min.css"> --}}
         <style>
             div.dataTables_wrapper  {
                 width: 1070px;
@@ -89,12 +91,6 @@
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     <script>
-        // $(document).ready(function () {
-        //     $('#dataPeminjaman').DataTable({
-        //         responsive: true,
-        //         scrollX: true,
-        //     });
-        // });
         let table = new DataTable('#dataPeminjaman', {
             responsive: true,
             scrollX: true,

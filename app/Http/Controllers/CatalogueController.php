@@ -11,18 +11,6 @@ use App\Models\genreHistorical;
 
 class CatalogueController extends Controller
 {
-    // $genre = Genre::all();
-    // $books = BooksCatalogue::with('genre');
-    // if ($request->has('genre')) {
-    //     $books->whereHas('genre', function ($query) use ($request) {
-    //         $query->where('genre.slug', $request->genre);
-    //     })->get();
-    // } else {
-    //     $books = BooksCatalogue::all();
-    // }
-
-    // $historicalBook = genreHistorical::all();
-    // $educationBook = genreEducation::all();
     public function catalogue_page( Request $request )
     {
         $genre = Genre::all();
