@@ -26,7 +26,7 @@
                 @csrf
                 <div class="card mt-5 mx-auto">
                     <a class="crud">Update Buku</a>
-                    <div class="inputBox1">
+                    <div class="inputBox">
                         <input type="text" name="judul" id="judul" required="required" value="{{ $book_edit->judul }}">
                         <span class="">Judul</span>
                     </div>
@@ -78,17 +78,18 @@
 
                     <textarea name="isi_buku" id="isi_buku">{{ $book_edit->isi_buku }}</textarea>
 
-                    <div class="col">
+                    {{-- <div class="col">
                         <span class="form-text">Image</span>
                         <input type="file" class="form-control mt-2" name="image" id="image" placeholder="/img/buku/{{ $book_edit->image }}">
-                    </div>
+                    </div> --}}
 
-                    <div>
+                    <div class="text-center border bg-dark rounded-5">
                         @if ($book_edit->image === NULL)
-                        <p>Gambar belum ditambahkan</p>
+                            <img id="img" src="https://kodfun.github.io/Reels/ImagePreview/choose.png" height="200">
                         @else
-                        <img src="/img/buku/{{ $book_edit->image }}" width="200px" alt="">
+                            <img id="img" src="/img/buku/{{ $book_edit->image }}" height="200" alt="">
                         @endif
+                        <input type="file" class="form-control mt-2" name="image" id="input" multiple>
                     </div>
 
                     <button class="enter" type="submit">Enter</button>

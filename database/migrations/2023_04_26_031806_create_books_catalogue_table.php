@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('books_catalogue', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->nullable();
+            $table->bigIntegxer('user_id')->nullable();
             $table->string('judul');
             $table->text('sinopsis')->nullable();
             $table->string('slug', 255)->nullable();
