@@ -153,7 +153,7 @@
                                                 <input type="hidden" value="{{ $borrow->book_id }}" name="book_id">
                                                 @if ($borrow->tipe === 'Fisik' && $borrow->status === 'dikembalikan')
                                                     {{-- <p class="text-success mt-3 fw-bold fs-5">Sudah dikembalikan</p> --}}
-                                                    <a href="/Readteracy/catalogue" class="btn btn-primary btn-sm mt-3">Pinjam lagi</a>
+                                                    <a href="/Readteracy/detail/buku/{{ $borrow->book_id }}" class="btn btn-primary btn-sm mt-3">Pinjam lagi</a>
                                                 @elseif ($borrow->tipe === 'Fisik')
                                                     <button class="btn btn-sm btn-dark mt-3" name="return_book">Return book</button>
                                                 @endif

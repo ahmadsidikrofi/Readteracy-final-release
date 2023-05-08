@@ -13,7 +13,6 @@
         <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon.png">
         <title>Readteracy - Sewa Buku</title>
 
-
         <style>
             /* inter-300 - latin */
             @font-face {
@@ -126,9 +125,10 @@
                 <div class="container-fluid px-vw-5">
                     <div class="position-absolute w-100 h-50 bg-dark bottom-0 start-0"></div>
                     <div class="row d-flex align-items-center position-relative justify-content-center px-0 g-5">
-                        <div class="col-12 col-lg-6">
-                            <img src="/img/buku1.png" width="2280" height="1732" alt="..."
-                                class="img-fluid position-relative rounded-5 shadow" data-aos="fade-up">
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <img src="/img/buku1.png" width="1116" height="1578" alt="..."
+                                class="img-fluid position-relative rounded-5 shadow" data-aos="fade-up"
+                                data-aos-duration="2000">
                         </div>
                         <div class="col-12 col-md-6 col-lg-3">
                             <img src="/img/buku2.png" width="1116" height="1578" alt="..."
@@ -136,9 +136,14 @@
                                 data-aos-duration="2000">
                         </div>
                         <div class="col-12 col-md-6 col-lg-3">
-                            <img src="/img/buku3.png" width="1116" height="848" alt="..."
+                            <img src="/img/buku3.png" width="1116" height="1578" alt="..."
                                 class="img-fluid position-relative rounded-5 shadow" data-aos="fade-up"
-                                data-aos-duration="3000">
+                                data-aos-duration="2000">
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <img src="/img/buku2.png" width="1116" height="1578" alt="..."
+                                class="img-fluid position-relative rounded-5 shadow" data-aos="fade-up"
+                                data-aos-duration="2000">
                         </div>
                     </div>
                 </div>

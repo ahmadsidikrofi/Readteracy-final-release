@@ -44,6 +44,7 @@
                             <th>Tanggal Sewa</th>
                             <th>Tanggal Pengembalian</th>
                             <th>Actual Return</th>
+                            <th>Tipe</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -59,6 +60,7 @@
                                         <td>{{ $borrowedBook->rent_date }}</td>
                                         <td>{{ $borrowedBook->return_date }}</td>
                                         <td>{{ $borrowedBook->actual_return_date }}</td>
+                                        <td>{{ $borrowedBook->tipe }}</td>
                                         <td>{{ $borrowedBook->status }}</td>
                                         <td>
                                             <form action="/Readteracy/{{ $borrowedBook->id }}/ubah-status/data-peminjaman" method="post">

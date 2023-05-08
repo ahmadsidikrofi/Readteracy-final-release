@@ -81,7 +81,6 @@ class CatalogueController extends Controller
         $detail_book = BooksCatalogue::find($id);
         $peminjamanBuku = PeminjamanBuku::where('user_id', $user->id)
         ->where('book_id', $detail_book->id)->orderByDesc('id')->first();
-        // $detail_book = BooksCatalogue::where('slug', $slug)->first();
         return view('books.detailBook', compact(['detail_book', 'peminjamanBuku', 'genre']));
     }
 
@@ -91,5 +90,16 @@ class CatalogueController extends Controller
         $detail_book = BooksCatalogue::findOrFail($id);
         $peminjamanBuku = PeminjamanBuku::where('book_id', $detail_book->id)->orderByDesc('id')->first();
         return view('books.detailBook', compact(['detail_book', 'genre', 'peminjamanBuku']));
+    }
+
+    public function detailBook_page_after_return( $id )
+    {
+        $genre = Genre::all();
+
+        $user = auth()->user();
+        $detail_book = BooksCatalogue::find($id);
+        $peminjamanBuku = PeminjamanBuku::where('user_id', $user->id)
+        ->where('book_id', $detail_book->id)->orderByDesc('id')->first();
+        return view('books.detailBook', compact(['detail_book', 'peminjamanBuku', 'genre']));
     }
 }

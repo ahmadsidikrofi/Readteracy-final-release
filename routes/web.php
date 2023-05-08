@@ -67,6 +67,8 @@ Route::middleware('what_role')->group(function() {
     Route::get('/Readteracy/delete-book/{slug}', [CatalogueController::class, "destroy"]);
 });
 
+Route::get('/Readteracy/detail/buku/{id}', [CatalogueController::class, "detailBook_page_after_return"]);
+
 
 // Peminjaman Buku / history/libary
 Route::get('/Readteracy/borrowed', [PeminjamanBukuController::class, "viewPage_pinjamBuku"]);

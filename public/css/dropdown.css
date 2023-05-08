@@ -45,7 +45,7 @@
 
 .dropdown .option {
     position: absolute;
-    top: 70px;
+    top: 60px;
     width: 140%;
     background: #000000;
     box-shadow: 0 30px 30px rgba(0, 0, 0, 0.05);

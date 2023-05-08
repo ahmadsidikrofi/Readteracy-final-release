@@ -13,10 +13,16 @@
             background-color: #e8e8e8;
         }
     </style>
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/o61nnuwogclhd3z601n2k0zh479m9kbnsivauhaxrlu4jco0/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     {{-- <script src="https://cdn.tiny.cloud/1/o61nnuwogclhd3z601n2k0zh479m9kbnsivauhaxrlu4jco0/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script> --}}
-    <script>tinymce.init({selector:'textarea'});</script>
+    <script>
+        tinymce.init({
+            selector:'textarea',
+            plugins: ['emoticons', 'fullscreen'],
+            fullscreen_native: true,
+        });
+    </script>
 </head>
 <body class="bg">
     <section class="mb-5 mt-5 py-5">
@@ -76,6 +82,12 @@
                         <input type="file" class="form-control mt-2" name="image" id="image" required multiple>
                     </div>
 
+                    <div class="text-center border bg-dark rounded-5">
+                        <img id="img" src="https://kodfun.github.io/Reels/ImagePreview/choose.png" height="200">
+                        <input type="file" class="form-control mt-2" name="image" id="input" required multiple>
+                    </div>
+
+
                     <button class="enter" type="submit">Enter</button>
                 </div>
             </form>
@@ -84,10 +96,25 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+<script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+
+<script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+
 <script>
     $(document).ready(function() {
         $('.multiple-genre').select2();
     });
+</script>
+<script>
+let img = document.getElementById("img");
+let input = document.getElementById("input");
+
+input.onchange = (e) => {
+  if (input.files[0]) img.src = URL.createObjectURL(input.files[0]);
+};
+
 </script>
 </html>
 

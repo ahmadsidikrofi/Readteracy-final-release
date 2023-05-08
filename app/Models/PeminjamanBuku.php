@@ -11,17 +11,17 @@ class PeminjamanBuku extends Model
     protected $table = 'peminjaman_buku';
     protected $guarded = ["actual_return_date"];
 
-    public function genreHistorical()
-    {
-        return $this->belongsTo(genreHistorical::class);
-    }
-    public function genreEducation()
-    {
-        return $this->belongsTo(genreEducation::class);
-    }
+    // public function genreHistorical()
+    // {
+    //     return $this->belongsTo(genreHistorical::class);
+    // }
+    // public function genreEducation()
+    // {
+    //     return $this->belongsTo(genreEducation::class);
+    // }
 
-    public function borrower()
-    {
-        return $this->belongsTo(User::class, 'borrower_id');
-    }
+    // public function borrower()
+    // {
+    //     return $this->belongsTo(User::class, 'borrower_id');
+    // }
 }

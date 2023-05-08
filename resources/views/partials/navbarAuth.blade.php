@@ -38,7 +38,7 @@
                             @if (Request::url() !== url('/Readteracy/genre/genreList'))
                                 <div class="option">
                                     @foreach ( $genre as $items )
-                                        <div onclick="show('{{ $items->nama_genre }}')"><ion-icon name="book"></ion-icon><a style="text-decoration: none;" class="text-white" href="/Readteracy/catalogue?genre={{ $items->slug }}">{{ $items->nama_genre }}</a></div>
+                                        <div onclick="show('{{ $items->nama_genre }}')"><ion-icon name="book" class="text-white"></ion-icon> <a style="text-decoration: none;" class="text-white" href="/Readteracy/catalogue?genre={{ $items->slug }}">{{ $items->nama_genre }}</a></div>
                                     @endforeach
                                 </div>
                             @else
