@@ -76,10 +76,10 @@
 
                     <textarea name="isi_buku" id="isi_buku">Tulis ceritamu</textarea>
 
-                    <div class="col">
+                    {{-- <div class="col">
                         <span class="form-text">Image</span>
                         <input type="file" class="form-control mt-2" name="image" id="image" required multiple>
-                    </div>
+                    </div> --}}
 
                     <div class="text-center border bg-dark rounded-5">
                         <img id="img" src="https://kodfun.github.io/Reels/ImagePreview/choose.png" height="200">
@@ -108,7 +108,6 @@
     input.onchange = (e) => {
     if (input.files[0]) img.src = URL.createObjectURL(input.files[0]);
     };
-
 </script>
 </html>
 

@@ -22,4 +22,10 @@ class NavbarController extends Controller
         $booksRight = BooksCatalogue::latest()->take(2)->skip(2)->get();
         return view('homeGuest', compact(["genre", "booksLeft", "booksRight"]));
     }
+
+    public function notification()
+    {
+        $genre = Genre::all();
+        return view('notification',compact(["genre"]));
+    }
 }

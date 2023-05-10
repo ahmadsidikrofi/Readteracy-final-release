@@ -41,7 +41,7 @@ class CatalogueController extends Controller
             $books -> image = $request -> file("image")->getClientOriginalName();
             $books -> save();
         }
-        return redirect('/Readteracy/catalogue');
+        return redirect('/Readteracy/catalogue')->with('addBook', 'Buku berhasil ditambah');
     }
 
     public function editBook_page( $slug )
@@ -64,7 +64,7 @@ class CatalogueController extends Controller
             $book_edit -> image = $request -> file("image")->getClientOriginalName();
             $book_edit -> save();
         }
-        return redirect('/Readteracy/catalogue');
+        return redirect('/Readteracy/catalogue')->with('editBook', 'Buku berhasil diedit');
     }
 
     public function destroy( $slug )

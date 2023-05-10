@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Readteracy - Catalogue</title>
+        <link rel="stylesheet" href="/css/toastr.css">
         <link rel="stylesheet" href="/css/card.css">
         <link rel="stylesheet" href="/css/buttonGenre.css">
         <link rel="stylesheet" href="/css/dropdown.css">
@@ -101,7 +102,8 @@
                                                         </div>
                                                         <hr>
                                                         <div class="mb-3">
-                                                            <a href="/Readteracy/delete-book/{{ $book->slug }}" class="buttonGenre">Hapus</a>
+                                                            <a href="/Readteracy/delete-book/{{ $book->slug }}"
+                                                                class="buttonGenre deleteBook" book-slug="{{ $book->slug }}">Hapus</a>
                                                         </div>
                                                     @endif
                                                 </div>
@@ -120,6 +122,10 @@
                             </div>
                         </div>
                         @endforeach
+                        {{-- <div class="notification">
+                            <p>Kamu berhasil membuat notification 😍</p>
+                            <span class="notification_progress"></span>
+                        </div> --}}
                     </div>
                 </div>
             </section>
@@ -127,35 +133,66 @@
             @include('partials.footer')
         </main>
     </body>
-    <script src="/js/navbar.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/aos.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         AOS.init({
-            duration: 800, // values from 0 to 3000, with step 50ms
+            duration: 800,
         });
     </script>
+
     <script>
-        let scrollpos = window.scrollY
-        const header = document.querySelector(".navbar")
-        const header_height = header.offsetHeight
-
-        const add_class_on_scroll = () => header.classList.add("scrolled", "shadow-sm")
-        const remove_class_on_scroll = () => header.classList.remove("scrolled", "shadow-sm")
-
-        window.addEventListener('scroll', function() {
-            scrollpos = window.scrollY;
-
-            if (scrollpos >= header_height) {
-                add_class_on_scroll()
-            } else {
-                remove_class_on_scroll()
-            }
-
-            console.log(scrollpos)
-        })
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-bottom-right",
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "2000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        @if (Session::has('editBook'))
+            toastr.success('Edit buku berhasil dilakukan')
+        @endif
+        @if (Session::has('addBook'))
+            toastr.success('Buku berhasil ditambah')
+        @endif
     </script>
 
+    <script>
+            $('.deleteBook').click(function (e) {
+                var kitchenSet = $(this).attr('book-slug');
+                e.preventDefault()
+                Swal.fire({
+                    title: 'Yakin Ingin Di Hapus?',
+                    text: "Ntar Ribet Kalo Mau Nambah Buku Lagi",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#000000',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location = '/Readteracy/catalogue'
+                        Swal.fire(
+                        'Sukses Terhapus!',
+                        'Kitchen Set Berhasil Di Hapus',
+                        'BERHASIL'
+                        )
+                    }
+                })
+        });
+    </script>
     </html>
 @else
     @include('partials.navbarGuest')
@@ -260,6 +297,8 @@
                 </div>
             </section>
 
+
+
             @include('partials.footer')
         </main>
     </body>
@@ -270,26 +309,6 @@
         AOS.init({
             duration: 800, // values from 0 to 3000, with step 50ms
         });
-    </script>
-    <script>
-        let scrollpos = window.scrollY
-        const header = document.querySelector(".navbar")
-        const header_height = header.offsetHeight
-
-        const add_class_on_scroll = () => header.classList.add("scrolled", "shadow-sm")
-        const remove_class_on_scroll = () => header.classList.remove("scrolled", "shadow-sm")
-
-        window.addEventListener('scroll', function() {
-            scrollpos = window.scrollY;
-
-            if (scrollpos >= header_height) {
-                add_class_on_scroll()
-            } else {
-                remove_class_on_scroll()
-            }
-
-            console.log(scrollpos)
-        })
     </script>
 
     </html>

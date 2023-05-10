@@ -27,6 +27,7 @@ Route::get('/', [NavbarController::class, "all_genre_navbarGuest"]);
 // });
 
 Route::get('/Readteracy/home', [NavbarController::class, "all_genre_navbarAuth"]);
+Route::get('/notification', [NavbarController::class, "notification"]);
 
 Route::get('/Readteracy/403', function () {
     return view('forbidden.403');
