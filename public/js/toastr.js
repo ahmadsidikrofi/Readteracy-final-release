@@ -12,10 +12,4 @@ toastr.options = {
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
 }
-@if (Session::has('editBook'))
-    toastr.success('Edit buku berhasil dilakukan')
-@endif
-@if (Session::has('addBook'))
-    toastr.success('Buku berhasil ditambah')
-@endif
 

@@ -18,6 +18,14 @@ $('.deleteBook').click(function (e) {
             'Kitchen Set Berhasil Di Hapus',
             'BERHASIL'
             )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            {
+                Swal.fire(
+                  'Cancelled',
+                  'Your imaginary file is safe :)',
+                  'error'
+                )
+              }
         }
     })
 });

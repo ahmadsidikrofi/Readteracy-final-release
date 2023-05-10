@@ -145,6 +145,15 @@
             duration: 800,
         });
     </script>
+
+    <script>
+        @if (Session::has('editBook'))
+            toastr.success('Edit buku berhasil dilakukan')
+        @endif
+        @if (Session::has('addBook'))
+            toastr.success('Buku berhasil ditambah')
+        @endif
+    </script>
     </html>
 @else
     @include('partials.navbarGuest')

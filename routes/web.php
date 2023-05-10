@@ -74,7 +74,7 @@ Route::get('/Readteracy/detail/buku/{id}', [CatalogueController::class, "detailB
 // Peminjaman Buku / history/libary
 Route::get('/Readteracy/borrowed', [PeminjamanBukuController::class, "viewPage_pinjamBuku"]);
 Route::post('/Readteracy/borrow/{id}/non-fisik', [PeminjamanBukuController::class, "pinjam_buku_nonFisik"]);
-Route::post('/Readteracy/borrow/{id}/fisik', [PeminjamanBukuController::class, "pinjam_buku_fisik"]);
+Route::post('/Readteracy/borrow/{id}/fisik', [PeminjamanBukuController::class, "pinjam_buku_fisik"])->name("pinjamBukuFisik");
 Route::post('/Readteracy/return-book', [PeminjamanBukuController::class, "return_book"]);
 
 

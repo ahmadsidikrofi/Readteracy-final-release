@@ -67,14 +67,11 @@ class PeminjamanBukuController extends Controller
             DB::beginTransaction();
             PeminjamanBuku::create($request->except('genre'));
             DB::commit();
-
-            Session::flash('message', 'Sewa buku berhasil!');
-            Session::flash('alert-class', 'alert-success');
-            return Redirect::back();
+            return Redirect::back()->with('bukuFisik_terpinjam');
 
         } catch (\Throwable $throw) {
             DB::rollback();
-            dd($throw);
+            return redirect()->back()->with('rent_date_null', "Harap mengisi tanggal peminjaman");
         }
     }
 

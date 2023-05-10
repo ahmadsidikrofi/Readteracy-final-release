@@ -12,7 +12,6 @@
         <link rel="stylesheet" href="/css/dropdown.css">
         <link rel="stylesheet" href="/css/navbar.css">
         <link rel="stylesheet" href="/css/formFisik.css">
-
         <style>
             .detail-container {
                 margin-top: 200px;
@@ -161,36 +160,14 @@
 
         @include('partials.footer')
     </body>
-    <script src="/js/navbar.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/aos.js"></script>
-    {{-- <script src="/js/modalForm.js"></script> --}}
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         AOS.init({
             duration: 800, // values from 0 to 3000, with step 50ms
         });
-    </script>
-    <script>
-        let scrollpos = window.scrollY
-        const header = document.querySelector(".navbar")
-        const header_height = header.offsetHeight
-
-        const add_class_on_scroll = () => header.classList.add("scrolled", "shadow-sm")
-        const remove_class_on_scroll = () => header.classList.remove("scrolled", "shadow-sm")
-
-        window.addEventListener('scroll', function() {
-            scrollpos = window.scrollY;
-
-            if (scrollpos >= header_height) {
-                add_class_on_scroll()
-            } else {
-                remove_class_on_scroll()
-            }
-
-            console.log(scrollpos)
-        })
     </script>
     </html>
 
@@ -329,7 +306,6 @@
 
         @include('partials.footer')
     </body>
-    <script src="/js/navbar.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/aos.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/css/theme.min.css">
     <link rel="stylesheet" href="/css/theme.css">
     <link rel="stylesheet" href="/css/dropdown.css">
-
 </head>
 <body>
     <header>
@@ -99,23 +98,20 @@
 <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
 <script src="/js/aos.js"></script>
+{{-- <script src="/js/navbar.js"></script> --}}
 <script>
     AOS.init({
         duration: 800, // values from 0 to 3000, with step 50ms
     });
 </script>
-<script>
-    function show(items) {
-        document.querySelector('.textBox').value = items;
-        document.getElementById('value').style.color = 'white';
-    }
 
-    var dropdown = document.querySelector('.dropdown');
-    dropdown.onclick = function() {
-        dropdown.classList.toggle('active');
+<script>
+    let subMenu = document.getElementById("subMenu");
+
+    function toggleMenu() {
+        subMenu.classList.toggle("open-menu");
     }
 </script>
-<script src="/js/navbar.js"></script>
 </html>
 
 
