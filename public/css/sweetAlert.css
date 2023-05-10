@@ -1,0 +1,9 @@
+.swal2-popup {
+    background-color: #ffffff;
+}
+.swal2-confirm {
+    box-shadow: 3px 3px 7px #474747;
+}
+.swal2-cancel {
+    box-shadow: 3px 3px 10px #000000;
+}

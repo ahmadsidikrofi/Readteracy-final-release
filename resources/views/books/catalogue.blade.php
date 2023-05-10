@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="/css/card.css">
         <link rel="stylesheet" href="/css/buttonGenre.css">
         <link rel="stylesheet" href="/css/dropdown.css">
+        <link rel="stylesheet" href="/css/sweetAlert.css">
     </head>
     <body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
         <main>
@@ -103,7 +104,7 @@
                                                         <hr>
                                                         <div class="mb-3">
                                                             <a href="/Readteracy/delete-book/{{ $book->slug }}"
-                                                                class="buttonGenre deleteBook" book-slug="{{ $book->slug }}">Hapus</a>
+                                                                class="buttonGenre deleteBook" book-id="{{ $book->id }}">Hapus</a>
                                                         </div>
                                                     @endif
                                                 </div>
@@ -122,10 +123,6 @@
                             </div>
                         </div>
                         @endforeach
-                        {{-- <div class="notification">
-                            <p>Kamu berhasil membuat notification 😍</p>
-                            <span class="notification_progress"></span>
-                        </div> --}}
                     </div>
                 </div>
             </section>
@@ -137,60 +134,15 @@
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/aos.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
     integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/sweetAlert.js"></script>
+    <script src="/js/toastr.js"></script>
     <script>
         AOS.init({
             duration: 800,
-        });
-    </script>
-
-    <script>
-        toastr.options = {
-            "closeButton": true,
-            "progressBar": true,
-            "positionClass": "toast-bottom-right",
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "2000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
-        @if (Session::has('editBook'))
-            toastr.success('Edit buku berhasil dilakukan')
-        @endif
-        @if (Session::has('addBook'))
-            toastr.success('Buku berhasil ditambah')
-        @endif
-    </script>
-
-    <script>
-            $('.deleteBook').click(function (e) {
-                var kitchenSet = $(this).attr('book-slug');
-                e.preventDefault()
-                Swal.fire({
-                    title: 'Yakin Ingin Di Hapus?',
-                    text: "Ntar Ribet Kalo Mau Nambah Buku Lagi",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#000000',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location = '/Readteracy/catalogue'
-                        Swal.fire(
-                        'Sukses Terhapus!',
-                        'Kitchen Set Berhasil Di Hapus',
-                        'BERHASIL'
-                        )
-                    }
-                })
         });
     </script>
     </html>
