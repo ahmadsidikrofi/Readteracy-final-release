@@ -47,13 +47,13 @@
 
                             {{-- $detail_book->status == "in stock" && auth()->check() && auth()->user()->peminjamanBuku()->where('book_id', $detail_book->id)->exists() --}}
                             @if ($peminjamanBuku && $peminjamanBuku->status == "sedang dipinjam")
-                                <a href="/Readteracy/{{ $detail_book->id }}/baca-buku/historical" class="btn btn-dark mt-3">Ready to read</a>
+                                <a href="/Readteracy/baca-buku/{{ $detail_book->slug }}" class="btn btn-dark mt-3">Ready to read</a>
                             @elseif ($detail_book->status == "in stock")
                                 <button class="btn bg-dark text-white dropdown-toggle mt-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Want to read
                                 </button>
                             @elseif($peminjamanBuku && $peminjamanBuku->status == "in stock")
-                                <a href="/Readteracy/{{ $detail_book->id }}/baca-buku/historical" class="btn btn-dark mt-3">Ready to read</a>
+                                <a href="/Readteracy/baca-buku/{{ $detail_book->slug }}" class="btn btn-dark mt-3">Ready to read</a>
                             @elseif($peminjamanBuku && $peminjamanBuku->status == "dikembalikan")
                                 <button class="btn bg-dark text-white dropdown-toggle mt-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Want to read

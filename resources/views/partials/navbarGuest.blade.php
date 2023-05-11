@@ -97,16 +97,6 @@
         duration: 800,
     });
 </script>
-<script>
-    function show(items) {
-        document.querySelector('.textBox').value = items;
-        document.getElementById('value').style.color = 'white';
-    }
 
-    var dropdown = document.querySelector('.dropdown');
-    dropdown.onclick = function() {
-        dropdown.classList.toggle('active');
-    }
-</script>
 <script src="/js/navbar.js"></script>
 </html>

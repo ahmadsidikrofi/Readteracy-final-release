@@ -1,11 +1,3 @@
-
-let subMenu = document.getElementById("subMenu");
-
-function toggleMenu() {
-    subMenu.classList.toggle("open-menu");
-}
-
-
 let scrollpos = window.scrollY
 const header = document.querySelector(".navbar")
 const header_height = header.offsetHeight

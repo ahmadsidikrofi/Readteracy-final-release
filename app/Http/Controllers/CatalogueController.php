@@ -92,6 +92,12 @@ class CatalogueController extends Controller
         return view('books.detailBook', compact(['detail_book', 'genre', 'peminjamanBuku']));
     }
 
+    public function baca_buku( $slug )
+    {   $genre = Genre::all();
+        $isi_buku = BooksCatalogue::where('slug', $slug)->first();
+        return view('books.isiBuku', compact(['isi_buku', 'genre']));
+    }
+
     public function detailBook_page_after_return( $id )
     {
         $genre = Genre::all();

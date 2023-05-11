@@ -66,8 +66,9 @@ Route::middleware('what_role')->group(function() {
     Route::get('/Readteracy/editBook/{slug}', [CatalogueController::class, "editBook_page"]);
     Route::put('/Readteracy/catalogue/editBook/{slug}/store', [CatalogueController::class, "editBook_store"]);
     Route::get('/Readteracy/delete-book/{slug}', [CatalogueController::class, "destroy"]);
+    Route::get('/Readteracy/baca-buku/{slug}', [CatalogueController::class, "baca_buku"]);
 });
-
+// Route ini adalah ketika setelah mengembalikan buku
 Route::get('/Readteracy/detail/buku/{id}', [CatalogueController::class, "detailBook_page_after_return"]);
 
 
