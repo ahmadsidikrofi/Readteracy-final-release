@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 use App\Models\BooksCatalogue;
+use App\Models\Comment;
 use App\Models\genreEducation;
 use App\Models\PeminjamanBuku;
 use App\Models\genreHistorical;
@@ -92,10 +93,16 @@ class CatalogueController extends Controller
         return view('books.detailBook', compact(['detail_book', 'genre', 'peminjamanBuku']));
     }
 
-    public function baca_buku( $slug )
+    public function baca_buku( $id, Request $request )
     {   $genre = Genre::all();
-        $isi_buku = BooksCatalogue::where('slug', $slug)->first();
-        return view('books.isiBuku', compact(['isi_buku', 'genre']));
+        // $isi_buku = BooksCatalogue::where('slug', $slug)->first();
+        $isi_buku = PeminjamanBuku::find($id);
+        $comments = Comment::all();
+        if ( $request->users ) {
+            $comments->users()->sync($request->users);
+        }
+
+        return view('books.isiBuku', compact(['isi_buku', 'genre', 'comments']));
     }
 
     public function detailBook_page_after_return( $id )
