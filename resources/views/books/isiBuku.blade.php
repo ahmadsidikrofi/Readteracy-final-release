@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="/css/navbar.css">
         <link rel="stylesheet" href="/css/commentButton.css">
         <link rel="stylesheet" href="/css/comment.css">
+        <link rel="stylesheet" href="/css/toastr.css">
         <style>
             .detail-container {
                 margin-top: 200px;
@@ -38,8 +39,8 @@
                 <div class="card-body">
                     <h3 class="card-title text-center">{{ $isi_buku->judul }}</h3>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-7 col-md-7 col-sm-6">
+                <div class="row justify-content-center mx-3">
+                    <div class="col-lg-7 col-md-7 col-sm-10 ">
                         <?php
                         // $isi_buku = $isi_buku['isi_buku'];
                         // if (strlen($isi_buku) > 20) {
@@ -47,16 +48,16 @@
                         //     echo $isi_buku;
                         // }
                         ?>
-                        <p>{!! $isi_buku->isi_buku !!}</p>
+                        <p class="mx-auto">{!! $isi_buku->isi_buku !!}</p>
                     </div>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-sm-8 mx-auto">
+                <div class="row mt-3 mx-3">
+                    <div class="col-sm-2 col-lg-8 mx-auto">
                         <a class="btn btn-dark text-light w-100">Baca bagian selanjutnya</a>
                     </div>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-sm-8 mx-auto">
+                <div class="row mt-3 mx-3">
+                    <div class="col-sm-2 col-lg-8 mx-auto">
                         <form id="comment-form" action="/Readteracy/comment/book/{{ $isi_buku->id }}" method="post">
                             @csrf
                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
@@ -65,7 +66,7 @@
                                 <input type="text" class="form-control rounded-5" name="komentar"
                                     placeholder="Tulis komentar">
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary rounded-circle" type="submit">
+                                    <button class="btn btn-outline-dark rounded-circle" type="submit">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                             fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
                                             <path
@@ -95,7 +96,7 @@
                                             <h6 class="comment-name by-author"><a href="#">{{ $comment->user->name }}</a></h6>
                                             <span>{{ $comment->created_at->diffForHumans() }}</span>
                                             <i class="btn fa fa-reply btn-reply-comment" id="btn-reply-{{ $comment->id }}"></i>
-                                            <i class="btn fa fa-heart"></i>
+                                            <i class="btn fa fa-trash"></i>
                                         </div>
                                         <div class="comment-content">
                                             {{ $comment->komentar }}
@@ -104,7 +105,7 @@
                                             <input type="text" class="form-control komentar-kolom" name="komentar"
                                             placeholder="Balas komentar" id="komentar-kolom-{{ $comment->id }}" style="display: none;">
                                             <div class="input-group-append komentar-kolom" style="display: none;" id="komentar-kolom-{{ $comment->id }}">
-                                                <button class="btn btn-outline-secondary rounded-circle" type="submit">
+                                                <button class="btn btn-outline-dark rounded-circle" type="submit">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                         fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
                                                         <path
@@ -120,11 +121,14 @@
                     </div>
                     @endforeach
                 </div>
-
             </div>
         </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/toastr.js"></script>
     <script>
         $(document).ready(function () {
             $('.comment-main-level').on('click', '.btn-reply-comment', function () {
@@ -132,24 +136,11 @@
             });
         });
     </script>
+    <script>
+        @if (Session::has('komentarNull'))
+            toastr.error('Komentar tidak boleh kosong');
+        @endif
+    </script>
     </html>
     @endsection
 
-
-<div class="col-sm-8 mx-auto">
-    @foreach ($comments as $comment)
-        @if ($comment->user->image === null)
-            <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=random&color=28a745"
-                alt="avatar" class="rounded-circle img-fluid" style="width: 50px;"
-                id="image_preview">
-        @else
-            <img src="/img/profile/{{ $comment->user->image }}" alt="avatar"
-                class="rounded-circle img-fluid" style="width: 60px; height: 60px"
-                id="image_preview">
-        @endif
-        <p class="mx-5">{{ $comment->user->name }}</p>
-        <p class="mx-5">{{ $comment->komentar }}</p>
-        <p class="mx-5">{{ $comment->created_at->diffForHumans() }}</p>
-        <hr>
-    @endforeach
-</div>

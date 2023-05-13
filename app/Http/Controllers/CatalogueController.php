@@ -95,12 +95,11 @@ class CatalogueController extends Controller
 
     public function baca_buku( $id, Request $request )
     {   $genre = Genre::all();
+        $user = auth()->user();
         // $isi_buku = BooksCatalogue::where('slug', $slug)->first();
         $isi_buku = PeminjamanBuku::find($id);
+        // $comments = Comment::where('book_id', $isi_buku->id)->get();
         $comments = Comment::all();
-        if ( $request->users ) {
-            $comments->users()->sync($request->users);
-        }
 
         return view('books.isiBuku', compact(['isi_buku', 'genre', 'comments']));
     }

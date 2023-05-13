@@ -10,7 +10,11 @@ class CommentController extends Controller
 {
     public function add_comment( Request $request )
     {
-        Comment::create($request->all());
-        return redirect()->back();
+        try {
+            Comment::create($request->all());
+            return redirect()->back();
+        } catch (\Throwable $err) {
+            return redirect()->back()->with('komentarNull', 'Komentar tidak boleh kosong');
+        }
     }
 }

@@ -187,7 +187,6 @@
         <link rel="stylesheet" href="/css/theme.min.css">
         <link rel="stylesheet" href="/css/theme.css">
         <link rel="stylesheet" href="/css/dropdown.css">
-
         <style>
             .detail-container {
                 margin-top: 200px;

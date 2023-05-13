@@ -57,6 +57,7 @@
                 </ul>
 
                 {{-- <img src="/img/guest.png" alt="" class="userPic" onclick="toggleMenu()"> --}}
+                @if (Auth::user())
                 <img class="userPic me-3" onclick="toggleMenu()" src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=random&color=28a745" alt="">
                 <button class="btn btn-light" onclick="toggleMenu()">Menu</button>
                 <div class="sub-menu-wrap" id="subMenu">
@@ -88,6 +89,7 @@
                         </a>
                     </div>
                 </div>
+                @endif
             </div>
         </nav>
     </header>

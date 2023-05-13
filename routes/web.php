@@ -22,7 +22,7 @@ use App\Http\Controllers\PeminjamanBukuController;
 |
 */
 
-Route::get('/', [NavbarController::class, "all_genre_navbarGuest"]);
+Route::get('/', [NavbarController::class, "all_genre_navbarGuest"])->middleware('guest');
 // Route::get('/', function () {
 //     return view('homeGuest');
 // });
