@@ -79,6 +79,17 @@
                     </script>
 
                 </div>
+
+                <div class="row mx-3 mt-5">
+                    <h4 class="fw-bold">Related Books</h4>
+                    @foreach ( $related_books as $book )
+                        <div class="col-sm">
+                            <p>Nama : {{ $book->judul }}</p>
+                            <p>Genre: {{ $book->genre()->pluck('nama_genre')->implode(', ') }}</p>
+                            <p>Sinopsis: {{ $book->sinopsis }}</p>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </body>

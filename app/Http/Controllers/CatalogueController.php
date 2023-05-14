@@ -94,20 +94,22 @@ class CatalogueController extends Controller
     }
 
     public function baca_buku( $id, Request $request )
-    {   $genre = Genre::all();
-        $user = auth()->user();
-        // $isi_buku = BooksCatalogue::where('slug', $slug)->first();
-        $isi_buku = PeminjamanBuku::find($id);
-        // $comments = Comment::where('book_id', $isi_buku->id)->get();
-        $comments = Comment::all();
+    {
+        $isi_buku = BooksCatalogue::find($id);
+        $genre = $isi_buku->genre()->get();
+        $related_books = BooksCatalogue::whereHas('genre', function($query) use ($genre) {
+            $query->whereIn('genre.id', $genre->pluck('id'));
+        })
+        ->where('books_catalogue.id', '!=', $isi_buku->id)
+        ->get();
 
-        return view('books.isiBuku', compact(['isi_buku', 'genre', 'comments']));
+        return view('books.isiBuku', compact(['isi_buku', 'genre', 'related_books']));
     }
+
 
     public function detailBook_page_after_return( $id )
     {
         $genre = Genre::all();
-
         $user = auth()->user();
         $detail_book = BooksCatalogue::find($id);
         $peminjamanBuku = PeminjamanBuku::where('user_id', $user->id)
