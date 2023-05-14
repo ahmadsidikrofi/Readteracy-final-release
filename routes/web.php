@@ -61,7 +61,7 @@ Route::get('Readteracy/account/updateProfile', [AuthController::class, "update_p
 Route::get('/Readteracy/catalogue', [CatalogueController::class, "catalogue_page"]);
 Route::get('/Readteracy/detail/guest/{id}', [CatalogueController::class, "detailBook_page_guest"]);
 Route::get('/Readteracy/detail/{id}', [CatalogueController::class, "detailBook_page_userAuth"]);
-Route::get('/Readteracy/baca-buku/{id}', [CatalogueController::class, "baca_buku"]);
+Route::get('/Readteracy/baca-buku/{slug}', [CatalogueController::class, "baca_buku"]);
 Route::middleware('what_role')->group(function() {
     Route::get('/Readteracy/catalogue/addBook', [CatalogueController::class, "addBook_page"]);
     Route::post('/Readteracy/catalogue/addBook/store', [CatalogueController::class, "addBook_store"]);
@@ -80,7 +80,7 @@ Route::post('/Readteracy/borrow/{id}/fisik', [PeminjamanBukuController::class, "
 Route::post('/Readteracy/return-book', [PeminjamanBukuController::class, "return_book"]);
 
 // Comments
-Route::post('/Readteracy/comment/book/{id}', [CommentController::class, "add_comment"]);
+Route::post('/Readteracy/comment/book/{slug}', [CommentController::class, "add_comment"]);
 
 
 // Data Buku (Petugas buku)

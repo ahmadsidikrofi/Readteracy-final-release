@@ -16,8 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('book_id')->nullable();
             $table->text('komentar');
-            // $table->string('nama_komentator');
-            // $table->string('image')->nullable();
             $table->string('parrent')->default(0);
             $table->timestamps();
         });

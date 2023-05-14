@@ -30,4 +30,9 @@ class BooksCatalogue extends Model
     {
         return $this->belongsToMany(Genre::class, "book_genre", "book_id", "genre_id");
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class,'book_id');
+    }
 }

@@ -58,13 +58,13 @@
                 </div>
                 <div class="row mt-3 mx-3">
                     <div class="col-sm-2 col-lg-8 mx-auto">
-                        <form id="comment-form" action="/Readteracy/comment/book/{{ $isi_buku->id }}" method="post">
+                        <form id="comment-form" action="/Readteracy/comment/book/{{ $isi_buku->slug }}" method="post">
                             @csrf
+                            <input type="hidden" name="slug" value="{{ $isi_buku->slug }}">
                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                             <input type="hidden" name="book_id" value="{{ $isi_buku->id }}">
                             <div class="input-group">
-                                <input type="text" class="form-control rounded-5" name="komentar"
-                                    placeholder="Tulis komentar">
+                                <input type="text" class="form-control rounded-5" name="komentar" placeholder="Tulis komentar">
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-dark rounded-circle" type="submit">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
@@ -79,47 +79,49 @@
                     </div>
                 </div>
                 <div class="row">
-                    @foreach ( $comments as $comment )
-                    <div class="comments-container">
-                        <ul id="comments-list" class="comments-list">
-                            <li>
-                                <div class="comment-main-level">
-                                    @if ($comment->user->image === NULL)
-                                        <div class="comment-avatar"><img src="https://ui-avatars.com/api/?name={{ urlencode($comment->user->name) }}&background=random&color=28a745"
-                                            alt="avatar" id="image_preview"> </div>
-                                    @else
-                                        <div class="comment-avatar"><img src="/img/profile/{{ $comment->user->image }}"> </div>
-                                    @endif
+                    @forelse ( $isi_buku->comments as $comment )
+                        <div class="comments-container">
+                            <ul id="comments-list" class="comments-list">
+                                <li>
+                                    <div class="comment-main-level">
+                                        @if ($comment->user->image === NULL)
+                                            <div class="comment-avatar"><img src="https://ui-avatars.com/api/?name={{ urlencode($comment->user->name) }}&background=random&color=28a745"
+                                                alt="avatar" id="image_preview"> </div>
+                                        @else
+                                            <div class="comment-avatar"><img src="/img/profile/{{ $comment->user->image }}"> </div>
+                                        @endif
 
-                                    <div class="comment-box">
-                                        <div class="comment-head">
-                                            <h6 class="comment-name by-author"><a href="#">{{ $comment->user->name }}</a></h6>
-                                            <span>{{ $comment->created_at->diffForHumans() }}</span>
-                                            <i class="btn fa fa-reply btn-reply-comment" id="btn-reply-{{ $comment->id }}"></i>
-                                            <i class="btn fa fa-trash"></i>
-                                        </div>
-                                        <div class="comment-content">
-                                            {{ $comment->komentar }}
-                                        </div>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control komentar-kolom" name="komentar"
-                                            placeholder="Balas komentar" id="komentar-kolom-{{ $comment->id }}" style="display: none;">
-                                            <div class="input-group-append komentar-kolom" style="display: none;" id="komentar-kolom-{{ $comment->id }}">
-                                                <button class="btn btn-outline-dark rounded-circle" type="submit">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                                        fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
-                                                    </svg>
-                                                </button>
+                                        <div class="comment-box">
+                                            <div class="comment-head">
+                                                <h6 class="comment-name by-author"><a href="#">{{ $comment->user->name }}</a></h6>
+                                                <span>{{ $comment->created_at->diffForHumans() }}</span>
+                                                <i class="btn fa fa-reply btn-reply-comment" id="btn-reply-{{ $comment->id }}"></i>
+                                                <i class="btn fa fa-trash"></i>
+                                            </div>
+                                            <div class="comment-content">
+                                                {{ $comment->komentar }}
+                                            </div>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control komentar-kolom" name="komentar"
+                                                placeholder="Balas komentar" id="komentar-kolom-{{ $comment->id }}" style="display: none;">
+                                                <div class="input-group-append komentar-kolom" style="display: none;" id="komentar-kolom-{{ $comment->id }}">
+                                                    <button class="btn btn-outline-dark rounded-circle" type="submit">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                            fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    @endforeach
+                                </li>
+                            </ul>
+                        </div>
+                    @empty
+                        <p>Belum ada komentar</p>
+                    @endforelse
                 </div>
             </div>
         </div>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('peminjaman_id')->nullable();
             $table->unsignedBigInteger('book_id')->nullable();
             $table->string('judul');
+            $table->string('slug', 255)->nullable()->after('judul');
             $table->unsignedBigInteger('genre_id')->nullable();
             $table->string('image');
             $table->text('sinopsis')->nullable();

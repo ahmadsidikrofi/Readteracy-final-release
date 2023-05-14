@@ -12,12 +12,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
-    public function peminjamanBuku()
-    {
-        return $this->hasMany(PeminjamanBuku::class);
-    }
-
     /**
      * The attributes that are mass assignable.
      *
@@ -29,6 +23,11 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+
+    public function peminjamanBuku()
+    {
+        return $this->hasMany(PeminjamanBuku::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
