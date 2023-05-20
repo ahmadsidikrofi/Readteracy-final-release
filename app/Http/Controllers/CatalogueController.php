@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 use App\Models\BooksCatalogue;
+use App\Models\Comment;
 use App\Models\genreEducation;
 use App\Models\PeminjamanBuku;
 use App\Models\genreHistorical;
@@ -92,16 +93,38 @@ class CatalogueController extends Controller
         return view('books.detailBook', compact(['detail_book', 'genre', 'peminjamanBuku']));
     }
 
-    public function baca_buku( $slug )
-    {   $genre = Genre::all();
-        $isi_buku = BooksCatalogue::where('slug', $slug)->first();
-        return view('books.isiBuku', compact(['isi_buku', 'genre']));
+    public function baca_buku( $id, Request $request )
+    {
+        $genre = Genre::all();
+
+        $isi_buku = BooksCatalogue::find($id);
+        $genre_related = $isi_buku->genre()->get();
+        $related_books = BooksCatalogue::whereHas('genre', function($query) use ($genre_related) {
+            $query->whereIn('genre.id', $genre_related->pluck('id'));
+        })
+        ->where('books_catalogue.id', '!=', $isi_buku->id)
+        ->get();
+
+        return view('books.isiBuku', compact(['isi_buku', 'genre', 'related_books']));
     }
+
+    public function getNextPage($id, Request $request)
+    {
+        $isi_buku = BooksCatalogue::find($id);
+        $content = $isi_buku->isi_buku;
+        $perPage = 200; // Ubah sesuai kebutuhan Anda
+        $startPosition = $request->query('startPosition', 0);
+        $nextContent = substr($content, $startPosition, $perPage);
+        
+        return response()->json([
+            'content' => $nextContent,
+        ]);
+    }
+
 
     public function detailBook_page_after_return( $id )
     {
         $genre = Genre::all();
-
         $user = auth()->user();
         $detail_book = BooksCatalogue::find($id);
         $peminjamanBuku = PeminjamanBuku::where('user_id', $user->id)

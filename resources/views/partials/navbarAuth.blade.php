@@ -33,7 +33,8 @@
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
-                            <input type="text" id="value" class="textBox" placeholder="Genre's">
+                            <input type="text" id="value" class="textBox" placeholder="Genre's" autocomplete="off">
+                            <input type="text" placeholder="Genre's">
                             @if (Request::url() !== url('/Readteracy/genre/genreList'))
                                 <div class="option">
                                     @foreach ( $genre as $items )
@@ -57,6 +58,7 @@
                 </ul>
 
                 {{-- <img src="/img/guest.png" alt="" class="userPic" onclick="toggleMenu()"> --}}
+                @if (Auth::user())
                 <img class="userPic me-3" onclick="toggleMenu()" src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=random&color=28a745" alt="">
                 <button class="btn btn-light" onclick="toggleMenu()">Menu</button>
                 <div class="sub-menu-wrap" id="subMenu">
@@ -76,18 +78,19 @@
                             <p>Order</p>
                             <span>></span>
                         </a>
-                        <a href="/account/auth/logout" class="sub-menu-link">
-                            <img src="/img/logout.png">
-                            <p>Logout</p>
-                            <span>></span>
-                        </a>
                         <a href="/Readteracy/profile" class="sub-menu-link">
                             <img src="/img/order.png">
                             <p>Profile</p>
                             <span>></span>
                         </a>
+                        <a href="/account/auth/logout" class="sub-menu-link">
+                            <img src="/img/logout.png">
+                            <p>Logout</p>
+                            <span>></span>
+                        </a>
                     </div>
                 </div>
+                @endif
             </div>
         </nav>
     </header>

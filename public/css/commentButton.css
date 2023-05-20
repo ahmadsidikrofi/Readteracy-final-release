@@ -4,8 +4,15 @@
   }
 
   .input-group-append button {
-    margin-left: -44px;
+    margin-left: 3px;
+    /* border-radius: 0 5px 5px 0; */
   }
+
+  .input-group-append button:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+
   button svg {
     display: block;
     transform-origin: center center;

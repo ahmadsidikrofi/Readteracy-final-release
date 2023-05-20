@@ -47,13 +47,13 @@
 
                             {{-- $detail_book->status == "in stock" && auth()->check() && auth()->user()->peminjamanBuku()->where('book_id', $detail_book->id)->exists() --}}
                             @if ($peminjamanBuku && $peminjamanBuku->status == "sedang dipinjam")
-                                <a href="/Readteracy/baca-buku/{{ $detail_book->slug }}" class="btn btn-dark mt-3">Ready to read</a>
+                                <a href="/Readteracy/baca-buku/{{ $detail_book->id }}" class="btn btn-dark mt-3">Ready to read</a>
                             @elseif ($detail_book->status == "in stock")
                                 <button class="btn bg-dark text-white dropdown-toggle mt-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Want to read
                                 </button>
                             @elseif($peminjamanBuku && $peminjamanBuku->status == "in stock")
-                                <a href="/Readteracy/baca-buku/{{ $detail_book->slug }}" class="btn btn-dark mt-3">Ready to read</a>
+                                <a href="/Readteracy/baca-buku/{{ $detail_book->id }}" class="btn btn-dark mt-3">Ready to read</a>
                             @elseif($peminjamanBuku && $peminjamanBuku->status == "dikembalikan")
                                 <button class="btn bg-dark text-white dropdown-toggle mt-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Want to read
@@ -187,7 +187,6 @@
         <link rel="stylesheet" href="/css/theme.min.css">
         <link rel="stylesheet" href="/css/theme.css">
         <link rel="stylesheet" href="/css/dropdown.css">
-
         <style>
             .detail-container {
                 margin-top: 200px;

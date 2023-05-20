@@ -1,3 +1,17 @@
+function toggleMenu() {
+    subMenu.classList.toggle("open-menu");
+}
+
+function show(items) {
+    document.querySelector('.textBox').value = items;
+    document.getElementById('value').style.color = 'white';
+}
+
+var dropdown = document.querySelector('.dropdown');
+dropdown.onclick = function() {
+    dropdown.classList.toggle('active');
+}
+
 let scrollpos = window.scrollY
 const header = document.querySelector(".navbar")
 const header_height = header.offsetHeight

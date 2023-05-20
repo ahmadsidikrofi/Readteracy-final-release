@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\CatalogueController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\HistoricalController;
 use App\Http\Controllers\NavbarController;
@@ -21,7 +22,7 @@ use App\Http\Controllers\PeminjamanBukuController;
 |
 */
 
-Route::get('/', [NavbarController::class, "all_genre_navbarGuest"]);
+Route::get('/', [NavbarController::class, "all_genre_navbarGuest"])->middleware('guest');
 // Route::get('/', function () {
 //     return view('homeGuest');
 // });
@@ -60,13 +61,14 @@ Route::get('Readteracy/account/updateProfile', [AuthController::class, "update_p
 Route::get('/Readteracy/catalogue', [CatalogueController::class, "catalogue_page"]);
 Route::get('/Readteracy/detail/guest/{id}', [CatalogueController::class, "detailBook_page_guest"]);
 Route::get('/Readteracy/detail/{id}', [CatalogueController::class, "detailBook_page_userAuth"]);
+Route::get('/Readteracy/baca-buku/{id}', [CatalogueController::class, "baca_buku"]);
+Route::get('/get-next-page/{id}', [CatalogueController::class, "getNextPage"])->name('books.getNextPage');
 Route::middleware('what_role')->group(function() {
     Route::get('/Readteracy/catalogue/addBook', [CatalogueController::class, "addBook_page"]);
     Route::post('/Readteracy/catalogue/addBook/store', [CatalogueController::class, "addBook_store"]);
     Route::get('/Readteracy/editBook/{slug}', [CatalogueController::class, "editBook_page"]);
     Route::put('/Readteracy/catalogue/editBook/{slug}/store', [CatalogueController::class, "editBook_store"]);
     Route::get('/Readteracy/delete-book/{slug}', [CatalogueController::class, "destroy"]);
-    Route::get('/Readteracy/baca-buku/{slug}', [CatalogueController::class, "baca_buku"]);
 });
 // Route ini adalah ketika setelah mengembalikan buku
 Route::get('/Readteracy/detail/buku/{id}', [CatalogueController::class, "detailBook_page_after_return"]);
@@ -77,6 +79,9 @@ Route::get('/Readteracy/borrowed', [PeminjamanBukuController::class, "viewPage_p
 Route::post('/Readteracy/borrow/{id}/non-fisik', [PeminjamanBukuController::class, "pinjam_buku_nonFisik"]);
 Route::post('/Readteracy/borrow/{id}/fisik', [PeminjamanBukuController::class, "pinjam_buku_fisik"])->name("pinjamBukuFisik");
 Route::post('/Readteracy/return-book', [PeminjamanBukuController::class, "return_book"]);
+
+// Comments
+Route::post('/Readteracy/comment/book/{id}', [CommentController::class, "add_comment"]);
 
 
 // Data Buku (Petugas buku)

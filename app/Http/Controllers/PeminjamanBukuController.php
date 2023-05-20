@@ -19,7 +19,7 @@ class PeminjamanBukuController extends Controller
     {
         $user = auth()->user();
         $peminjaman = PeminjamanBuku::with('genreHistorical')->where('user_id', $user->id)->latest()->get();
-        return view('library', compact(['peminjaman']));
+        return view('library', compact(['peminjaman', 'count_sedangDipinjam']));
     }
 
     public function pinjam_buku_nonFisik( Request $request )
@@ -97,7 +97,13 @@ class PeminjamanBukuController extends Controller
         $genre = Genre::all();
         $borrowedBooks = PeminjamanBuku::latest()->get();
         $siPeminjam = User::all();
-        return view('dataPeminjaman2', compact(['borrowedBooks', "siPeminjam", 'genre']));
+        $count_sedangDipinjam = PeminjamanBuku::where('status', 'sedang dipinjam')->count();
+        $count_dikembalikan = PeminjamanBuku::where('status', 'dikembalikan')->count();
+        $count_inStock = PeminjamanBuku::where('status', 'in stock')->count();
+        return view('dataPeminjaman2', compact([
+            'borrowedBooks', "siPeminjam", 'genre',
+            'count_sedangDipinjam', 'count_dikembalikan', 'count_inStock'
+        ]));
     }
 
     public function ubah_status( Request $request, $id )

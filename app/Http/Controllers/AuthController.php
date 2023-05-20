@@ -88,7 +88,12 @@ class AuthController extends Controller
         $allBooks = BooksCatalogue::count();
         $allGenres = Genre::count();
         $count_users = Auth::count();
-        return view('auth.profile', compact(['peminjaman', 'count_users', 'genre', 'allGenres', 'allBooks']));
+        $count_peminjaman = PeminjamanBuku::count();
+        $count_pengembalian = PeminjamanBuku::where('status', '=', 'dikembalikan')->count();
+        return view('auth.profile', compact([
+            'peminjaman', 'count_users', 'genre',
+            'allGenres', 'allBooks', 'count_peminjaman', 'count_pengembalian'
+        ]));
     }
 
     public function update_profile( Request $request )
