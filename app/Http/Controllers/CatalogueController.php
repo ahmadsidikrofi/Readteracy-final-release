@@ -15,14 +15,17 @@ class CatalogueController extends Controller
     public function catalogue_page( Request $request )
     {
         $genre = Genre::all();
+        $books = BooksCatalogue::latest();
+        if ($request->search) {
+            $books->filter(['search' => $request->search]);
+        }
         if ($request->genre) {
             $books = BooksCatalogue::whereHas('genre', function($query) use($request) {
                 $query->where('genre.slug', $request->genre);
-            })->get();
-        } else {
-            $books = BooksCatalogue::latest()->get();
+            });
         }
-        return view('books.catalogue', compact(['books', 'genre']));
+        $books = $books->get();
+        return view('books.catalogue', compact(['genre', 'books']));
     }
 
 
@@ -115,7 +118,7 @@ class CatalogueController extends Controller
         $perPage = 200; // Ubah sesuai kebutuhan Anda
         $startPosition = $request->query('startPosition', 0);
         $nextContent = substr($content, $startPosition, $perPage);
-        
+
         return response()->json([
             'content' => $nextContent,
         ]);

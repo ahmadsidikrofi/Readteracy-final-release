@@ -30,4 +30,15 @@ class BooksCatalogue extends Model
     {
         return $this->belongsToMany(Genre::class, "book_genre", "book_id", "genre_id");
     }
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters["search"] ?? false, function( $query, $search ) {
+            return $query->where('judul', 'like', '%'. $search . '%')
+            ->orWhere('isi_buku', 'like', '%' . $search . '%')
+            ->orWhere('sinopsis', 'like', '%'. $search . '%');
+        });
+
+        return $query;
+    }
 }

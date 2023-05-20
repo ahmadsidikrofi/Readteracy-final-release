@@ -86,10 +86,10 @@
                                 </div>
                                 <div class="row d-flex align-items-center justify-content-center py-vh-5">
                                     <div class="col-12 col-xl-10">
-                                        <form action="" class="d-flex mb-5" role="search">
+                                        <form action="/Readteracy/catalogue" class="d-flex mb-5" role="search">
                                             <input class="me-3 form-control" type="search" placeholder="Judul Buku"
-                                                aria-label="Search">
-                                            <button class="btn btn-light" type="submit">Search</button>
+                                                aria-label="Search" name="search" value="{{ request('search') }}">
+                                            <button class="btn btn-light form-control search" type="submit">Search</button>
                                         </form>
                                         <span class="h5 text-secondary fw-bold text-center">Our Mission</span>
                                         <h1 class="display-huge mt-3 mb-3 lh-1">Kita menyewakan buku untuk masyarakat</h1>
@@ -102,7 +102,7 @@
                                         </p>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <a href="#" class="btn btn-xl btn-light">Book Now
+                                        <a href="/Readteracy/catalogue" class="btn btn-xl btn-light">Book Now
                                             <svg width="16" height="16"
                                                 fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"
