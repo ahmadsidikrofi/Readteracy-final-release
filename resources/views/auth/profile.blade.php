@@ -243,13 +243,12 @@
                                 </div>
                             </form>
                         </div>
-                        @if (Auth::user()->role === 1)
+                        @if (Auth::user()->role === 1 || Auth::user()->role === 2)
                         <div class="row" data-aos="fade-up">
                             <div class="col-md-12">
                                 <div class="card mb-4 mb-md-0">
                                     <div class="card-body">
-                                        <p class="mb-4"><span class="text-primary font-italic me-1">Readteracy</span>
-                                            Info
+                                        <p class="mb-4"><span class="text-primary font-italic me-1">Readteracy</span> Info
                                         </p>
                                         <div class="row">
                                             <div class="col">
@@ -267,6 +266,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @if (Auth::user()->role === 1)
                                             <div class="col">
                                                 <div class="card mt-3 border shadow" style="width: 18rem;">
                                                     <div class="row">
@@ -282,13 +282,14 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
                                             <div class="col">
-                                                <div class="card mt-3 border shadow justify-content-center" style="width: 15rem;">
+                                                <div class="card mt-3 border shadow justify-content-center" style="width: 18rem;">
                                                     <div class="row">
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-4">
                                                             <i class="fa-solid fa-layer-group fa-4x mx-3 mt-3"></i>
                                                         </div>
-                                                        <div class="col-md-9">
+                                                        <div class="col-md-8">
                                                             <div class="card-body">
                                                                 <h5 class="card-title">Genre's</h5>
                                                                 <p class="card-text fw-bold">{{ $allGenres }}</p>
@@ -297,6 +298,38 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col">
+                                                <div class="card mt-3 border shadow justify-content-center" style="width: 18rem;">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <i class="fa-solid fa-layer-group fa-4x mx-3 mt-3"></i>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Total borrowed</h5>
+                                                                <p class="card-text fw-bold">{{ $count_peminjaman }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @if (Auth::user()->role === 2)
+                                            <div class="col">
+                                                <div class="card mt-3 border shadow justify-content-center" style="width: 18rem;">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <i class="fa-solid fa-layer-group fa-4x mx-3 mt-3"></i>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">Total Return</h5>
+                                                                <p class="card-text fw-bold">{{ $count_pengembalian }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

@@ -62,6 +62,7 @@ Route::get('/Readteracy/catalogue', [CatalogueController::class, "catalogue_page
 Route::get('/Readteracy/detail/guest/{id}', [CatalogueController::class, "detailBook_page_guest"]);
 Route::get('/Readteracy/detail/{id}', [CatalogueController::class, "detailBook_page_userAuth"]);
 Route::get('/Readteracy/baca-buku/{id}', [CatalogueController::class, "baca_buku"]);
+Route::get('/get-next-page/{id}', [CatalogueController::class, "getNextPage"])->name('books.getNextPage');
 Route::middleware('what_role')->group(function() {
     Route::get('/Readteracy/catalogue/addBook', [CatalogueController::class, "addBook_page"]);
     Route::post('/Readteracy/catalogue/addBook/store', [CatalogueController::class, "addBook_store"]);

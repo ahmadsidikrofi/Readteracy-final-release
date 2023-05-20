@@ -95,15 +95,30 @@ class CatalogueController extends Controller
 
     public function baca_buku( $id, Request $request )
     {
+        $genre = Genre::all();
+
         $isi_buku = BooksCatalogue::find($id);
-        $genre = $isi_buku->genre()->get();
-        $related_books = BooksCatalogue::whereHas('genre', function($query) use ($genre) {
-            $query->whereIn('genre.id', $genre->pluck('id'));
+        $genre_related = $isi_buku->genre()->get();
+        $related_books = BooksCatalogue::whereHas('genre', function($query) use ($genre_related) {
+            $query->whereIn('genre.id', $genre_related->pluck('id'));
         })
         ->where('books_catalogue.id', '!=', $isi_buku->id)
         ->get();
 
         return view('books.isiBuku', compact(['isi_buku', 'genre', 'related_books']));
+    }
+
+    public function getNextPage($id, Request $request)
+    {
+        $isi_buku = BooksCatalogue::find($id);
+        $content = $isi_buku->isi_buku;
+        $perPage = 200; // Ubah sesuai kebutuhan Anda
+        $startPosition = $request->query('startPosition', 0);
+        $nextContent = substr($content, $startPosition, $perPage);
+        
+        return response()->json([
+            'content' => $nextContent,
+        ]);
     }
 
 

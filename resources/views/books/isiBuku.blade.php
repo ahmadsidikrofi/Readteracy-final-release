@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="/css/commentButton.css">
         <link rel="stylesheet" href="/css/comment.css">
         <link rel="stylesheet" href="/css/toastr.css">
+        <link rel="stylesheet" href="/css/relatedBook.css">
         <style>
             .detail-container {
                 margin-top: 200px;
@@ -41,19 +42,13 @@
                 </div>
                 <div class="row justify-content-center mx-3">
                     <div class="col-lg-7 col-md-7 col-sm-10 ">
-                        <?php
-                        // $isi_buku = $isi_buku['isi_buku'];
-                        // if (strlen($isi_buku) > 20) {
-                        //     $isi_buku = Str::substr($isi_buku, 0, 1000) . '...';
-                        //     echo $isi_buku;
-                        // }
-                        ?>
-                        <p class="mx-auto">{!! $isi_buku->isi_buku !!}</p>
+                        {{-- <p id="book-content" class="mx-auto" data-section="section-1">{!! substr($isi_buku->isi_buku, 0, 200) !!}...</p> --}}
+                        <span id="additional-content">{!! substr($isi_buku->isi_buku, 0, 200) !!}...</span>
                     </div>
                 </div>
                 <div class="row mt-3 mx-3">
                     <div class="col-sm-8 col-lg-8 mx-auto">
-                        <a class="btn btn-dark text-light w-100">Baca bagian selanjutnya</a>
+                        <a href="{{ route('books.getNextPage', $isi_buku->id) }}" class="btn btn-dark text-light w-100" id="continue-btn">Baca bagian selanjutnya</a>
                     </div>
                 </div>
                 <div class="row mt-3 mx-3">
@@ -91,6 +86,18 @@
                     @endforeach
                 </div>
             </div>
+            <div class="row mx-3 mt-4 mb-5">
+                <h4 class="fw-bold mb-3">Related Books</h4>
+                @foreach ( $related_books as $book )
+                <div class="card-related-book mx-4" style="background-image: url(/img/buku/{{ $book->image }})">
+                    <div class="textBox">
+                      <p class="text head">{{ $book->judul }}</p>
+                      <p class="text price">{{ $book->genre()->pluck('nama_genre')->implode(', ') }}</p>
+                      <a class="fw-bold btn btn-outline-light" href="/Readteracy/detail/buku/{{ $book->id }}">Lihat Aku</a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
         </div>
     </body>
     <script id="dsq-count-scr" src="//website-r41nxqdwxx.disqus.com/count.js" async></script>
@@ -111,6 +118,34 @@
             toastr.error('Komentar tidak boleh kosong');
         @endif
     </script>
+
+    <!-- Tambahkan script jQuery sebelum script berikut -->
+    <script>
+        $(document).ready(function () {
+            var startPosition = 201;
+
+            function loadNextPage() {
+                $.ajax({
+                    url: '{{ route('books.getNextPage', $isi_buku->id) }}',
+                    method: 'GET',
+                    data: { startPosition: startPosition },
+                    success: function (response) {
+                        $('#additional-content').append('<span>' + response.content + '</span>');
+                        startPosition += 200;
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            }
+
+            $('#continue-btn').on('click', function (e) {
+                e.preventDefault();
+                loadNextPage();
+            });
+        });
+    </script>
+
     </html>
     @endsection
 
