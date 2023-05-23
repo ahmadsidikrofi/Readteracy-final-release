@@ -148,7 +148,6 @@
                                                 <input type="hidden" value="{{ $borrow->user_id }}" name="user_id">
                                                 <input type="hidden" value="{{ $borrow->book_id }}" name="book_id">
                                                 @if ($borrow->tipe === 'Fisik' && $borrow->status === 'dikembalikan')
-                                                    {{-- <p class="text-success mt-3 fw-bold fs-5">Sudah dikembalikan</p> --}}
                                                     <a href="/Readteracy/detail/buku/{{ $borrow->book_id }}" class="btn btn-primary btn-sm mt-3">Pinjam lagi</a>
                                                 @elseif ($borrow->tipe === 'Fisik')
                                                     <button class="btn btn-sm btn-dark mt-3" name="return_book">Return book</button>
@@ -235,10 +234,11 @@
                                     @if (Auth::user()->role === 2)
                                         <a href="/Readteracy/data-peminjaman" class="btn btn-primary btn-lg mb-3">Data peminjaman buku</a>
                                         <a href="/Readteracy/genre/genreList" class="btn btn-primary btn-lg mb-3">Tambah Genre</a>
+                                    @elseif (Auth::user()->role === 1)
+                                        <a href="/Readteracy/admin/all-users" class="btn btn-primary btn-lg mb-3">All User</a>
                                     @endif
                                     <div class="row">
-                                        <button type="submit" name="updateProfile" class="btn btn-dark">Update
-                                            Profile</button>
+                                        <button type="submit" name="updateProfile" class="btn btn-dark">Update Profile</button>
                                     </div>
                                 </div>
                             </form>

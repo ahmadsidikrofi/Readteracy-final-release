@@ -10,6 +10,7 @@ use App\Http\Controllers\EducationController;
 use App\Http\Controllers\HistoricalController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\PeminjamanBukuController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,10 @@ Route::post('/Readteracy/addGenre/store', [GenreController::class, "addGenre_sto
 Route::get('/Readteracy/editGenre/{slug}', [GenreController::class, "editGenre_page"]);
 Route::put('/Readteracy/editGenre/{slug}/store', [GenreController::class, "editGenre_store"]);
 Route::get('/Readteracy/delete/{slug}/genre', [GenreController::class, "delete_genre"]);
+// Profile Admin all users
+Route::get('/Readteracy/admin/all-users', [UsersController::class, "listUser_page"]);
+Route::get('/Readteracy/see-profile/{id}', [UsersController::class, "profileUser_page"]);
+Route::put('/Readteracy/admin/update/member/{id}', [UsersController::class, "update_profileMember"]);
 
 Route::get('Readteracy/account/updateProfile', [AuthController::class, "update_profilePic2"])->name('updateProfilePicture');
 

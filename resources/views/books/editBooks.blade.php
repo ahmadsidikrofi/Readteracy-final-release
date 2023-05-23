@@ -1,11 +1,6 @@
 @include('partials.navbarAuth')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<main>
     <title>Readteracy - Edit Book Admin / Petugas</title>
     <link rel="stylesheet" href="/css/addForm.css">
     <style>
@@ -26,7 +21,7 @@
 <body class="bg">
     <section class="mb-5 mt-5 py-5">
         <div class="container py-vh-5 mb-5">
-            <form action="/Readteracy/catalogue/editBook/{{ $book_edit->slug }}/store" method="post" enctype="multipart/form-data">
+            <form action="/Readteracy/catalogue/editBook/{{ $book_edit->slug }}/store" method="post" enctype="multipart/form-data" id="image-upload" class="dropzone mx-auto" >
                 @method('put')
                 @csrf
                 <div class="card mt-5 mx-auto">
@@ -83,20 +78,18 @@
 
                     <textarea name="isi_buku" id="isi_buku">{{ $book_edit->isi_buku }}</textarea>
 
-                    {{-- <div class="col">
-                        <span class="form-text">Image</span>
-                        <input type="file" class="form-control mt-2" name="image" id="image" placeholder="/img/buku/{{ $book_edit->image }}">
-                    </div> --}}
-
+                    <label for="" class="text-blue fw-bold ">Drag & Drop gambar atau pilih </label>
                     <div class="text-center border bg-dark rounded-5">
-                        @if ($book_edit->image === NULL)
-                            <img id="img" src="https://kodfun.github.io/Reels/ImagePreview/choose.png" height="200">
-                        @else
-                            <img id="img" src="/img/buku/{{ $book_edit->image }}" height="200" alt="">
-                        @endif
-                        <input type="file" class="form-control mt-2" name="image" id="input" multiple>
+                        <div id="dropArea">
+                            @if ($book_edit->image === NULL)
+                                <img id="img" src="https://kodfun.github.io/Reels/ImagePreview/choose.png" height="200">
+                                <input type="file" class="form-control mt-2" name="image" id="input" required multiple>
+                            @else
+                                <img id="img" src="/img/buku/{{ $book_edit->image }}" height="200" alt="">
+                                <input type="file" class="form-control mt-2" name="image" id="input" required multiple>
+                            @endif
+                        </div>
                     </div>
-
                     <button class="enter" type="submit">Enter</button>
                 </div>
             </form>
@@ -105,21 +98,59 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script src="/js/navbar.js"></script>
 <script>
     $(document).ready(function() {
         $('.multiple-genre').select2();
     });
 </script>
+
+
 <script>
-    let img = document.getElementById("img");
-    let input = document.getElementById("input");
+    let dropArea = document.getElementById('dropArea');
+    let img = document.getElementById('img');
+    let input = document.getElementById('input');
+
+    dropArea.addEventListener('dragenter', dragEnter, false);
+    dropArea.addEventListener('dragover', dragOver, false);
+    dropArea.addEventListener('dragleave', dragLeave, false);
+    dropArea.addEventListener('drop', drop, false);
+
+    function dragEnter(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        dropArea.classList.add('dragover');
+    }
+
+    function dragOver(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    function dragLeave(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        dropArea.classList.remove('dragover');
+    }
+
+    function drop(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        dropArea.classList.remove('dragover');
+
+        let files = e.dataTransfer.files;
+        if (files.length > 0) {
+            input.files = files;
+            img.src = URL.createObjectURL(files[0]);
+        }
+    }
 
     input.onchange = (e) => {
-        if (input.files[0]) img.src = URL.createObjectURL(input.files[0]);
+        if (input.files[0]) {
+            img.src = URL.createObjectURL(input.files[0]);
+            dropArea.classList.remove('dragover');
+        }
     };
 </script>
-</html>
-
 
 @include('partials.footer')
+</main>

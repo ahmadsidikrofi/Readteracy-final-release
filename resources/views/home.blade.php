@@ -1,70 +1,7 @@
 @extends('partials.navbarAuth')
 
 @section('content')
-    <!doctype html>
-    <html class="h-100" lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-        <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon.png">
-        <title>Readteracy - Sewa Buku</title>
-
-        <style>
-            /* inter-300 - latin */
-            @font-face {
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 300;
-                font-display: swap;
-                src: local(''),
-                    url('/fonts/inter-v12-latin-300.woff2') format('woff2'),
-                    /* Chrome 26+, Opera 23+, Firefox 39+ */
-                    url('/fonts/inter-v12-latin-300.woff') format('woff');
-                /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-            }
-
-            /* inter-400 - latin */
-            @font-face {
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 400;
-                font-display: swap;
-                src: local(''),
-                    url('/fonts/inter-v12-latin-regular.woff2') format('woff2'),
-                    /* Chrome 26+, Opera 23+, Firefox 39+ */
-                    url('/fonts/inter-v12-latin-regular.woff') format('woff');
-                /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-            }
-
-            @font-face {
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 500;
-                font-display: swap;
-                src: local(''),
-                    url('/fonts/inter-v12-latin-500.woff2') format('woff2'),
-                    /* Chrome 26+, Opera 23+, Firefox 39+ */
-                    url('/fonts/inter-v12-latin-500.woff') format('woff');
-                /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-            }
-
-            @font-face {
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 700;
-                font-display: swap;
-                src: local(''),
-                    url('/fonts/inter-v12-latin-700.woff2') format('woff2'),
-                    /* Chrome 26+, Opera 23+, Firefox 39+ */
-                    url('/fonts/inter-v12-latin-700.woff') format('woff');
-                /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-            }
-        </style>
-    </head>
 
     <body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
 
@@ -89,7 +26,7 @@
                                         <form action="/Readteracy/catalogue" class="d-flex mb-5" role="search">
                                             <input class="me-3 form-control" type="search" placeholder="Judul Buku"
                                                 aria-label="Search" name="search" value="{{ request('search') }}">
-                                            <button class="btn btn-light form-control search" type="submit">Search</button>
+                                            <button class="btn btn-light search" type="submit">Search</button>
                                         </form>
                                         <span class="h5 text-secondary fw-bold text-center">Our Mission</span>
                                         <h1 class="display-huge mt-3 mb-3 lh-1">Kita menyewakan buku untuk masyarakat</h1>
@@ -196,10 +133,10 @@
                             @foreach ( $booksLeft as $book )
                                 <div class="card bg-transparent mb-5" data-aos="zoom-in-up">
                                     <div class="bg-dark shadow rounded-5 p-0">
-                                        <img src="/img/buku/{{ $book->image }}" width="532" height="227" alt="..."
+                                        <img src="/img/buku/{{ $book->image }}" width="582" height="200" alt="..."
                                             class="img-fluid rounded-5 no-bottom-radius" loading="lazy">
                                         <div class="p-5">
-                                            <h2 class="fw-lighter">Ipsum dolor est</h2>
+                                            <h2 class="fw-lighter">{{ $book->judul }}</h2>
                                             <p class="pb-4 text-secondary">Lorem ipsum dolor sit amet, consetetur sadipscing
                                                 elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
                                                 erat.</p>
@@ -217,10 +154,10 @@
                             @foreach ( $booksRight as $book )
                                 <div class="card bg-transparent mb-5 mt-5" data-aos="zoom-in-up">
                                     <div class="bg-dark shadow rounded-5 p-0">
-                                        <img src="/img/buku/{{ $book->image }}" width="582" height="390" alt="..."
+                                        <img src="/img/buku/{{ $book->image }}" width="582" height="200" alt="..."
                                             class="img-fluid rounded-5 no-bottom-radius" loading="lazy">
                                         <div class="p-5">
-                                            <h2 class="fw-lighter">Ipsum dolor est</h2>
+                                            <h2 class="fw-lighter">{{ $book->judul }}</h2>
                                             <p class="pb-4 text-secondary">
                                                 Lorem ipsum dolor sit amet, consetetur sadipscing
                                                 elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
@@ -287,9 +224,5 @@
                 console.log(scrollpos)
             })
         </script>
-
-    </body>
-
-    </html>
 @endsection
 

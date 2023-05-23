@@ -5,10 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 use App\Models\BooksCatalogue;
-use App\Models\Comment;
-use App\Models\genreEducation;
 use App\Models\PeminjamanBuku;
-use App\Models\genreHistorical;
 
 class CatalogueController extends Controller
 {
@@ -68,7 +65,8 @@ class CatalogueController extends Controller
             $book_edit -> image = $request -> file("image")->getClientOriginalName();
             $book_edit -> save();
         }
-        return redirect('/Readteracy/catalogue')->with('editBook', 'Buku berhasil diedit');
+
+        return redirect('/Readteracy/catalogue')->with('editBook', 'Edit buku berhasil dilakukan');
     }
 
     public function destroy( $slug )

@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('tmp_image', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('book_id')->nullable();
-            $table->text('komentar');
-            // $table->string('nama_komentator');
-            // $table->string('image')->nullable();
-            $table->string('parrent')->default(0);
+            $table->string('image');
+            $table->string('folder')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('tmp_image');
     }
 };

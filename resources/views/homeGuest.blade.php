@@ -1,62 +1,6 @@
 @extends('partials.navbarGuest')
 
 @section('content')
-    <!DOCTYPE html>
-    <html class="h-100" lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-        <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon.png">
-        <title>Readteracy - Sewa Buku</title>
-        <link rel="stylesheet" href="/css/theme.min.css">
-
-        <style>
-            /* inter-300 - latin */
-            @font-face {
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 300;
-                font-display: swap;
-                src: local(''),
-                    url('/fonts/inter-v12-latin-300.woff2') format('woff2'),
-                    url('/fonts/inter-v12-latin-300.woff') format('woff');
-            }
-
-            /* inter-400 - latin */
-            @font-face {
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 400;
-                font-display: swap;
-                src: local(''),
-                    url('/fonts/inter-v12-latin-regular.woff2') format('woff2'),
-                    url('/fonts/inter-v12-latin-regular.woff') format('woff');
-            }
-
-            @font-face {
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 500;
-                font-display: swap;
-                src: local(''),
-                    url('/fonts/inter-v12-latin-500.woff2') format('woff2'),
-                    url('/fonts/inter-v12-latin-500.woff') format('woff');
-            }
-
-            @font-face {
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 700;
-                font-display: swap;
-                src: local(''),
-                    url('/fonts/inter-v12-latin-700.woff2') format('woff2'),
-                    url('/fonts/inter-v12-latin-700.woff') format('woff');
-            }
-        </style>
-    </head>
     <body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
         <main>
             <div class="position-absolute w-100 h-50 bg-black top-0 start-0" data-aos="fade"></div>
@@ -171,11 +115,9 @@
                                         <img src="/img/buku/{{ $book->image }}" width="532" height="227" alt="..."
                                             class="img-fluid rounded-5 no-bottom-radius" loading="lazy">
                                         <div class="p-5">
-                                            <h2 class="fw-lighter">Ipsum dolor est</h2>
-                                            <p class="pb-4 text-secondary">Lorem ipsum dolor sit amet, consetetur sadipscing
-                                                elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                                                erat.</p>
-                                            <a href="#" class="link-fancy link-fancy-light">Read more</a>
+                                            <h2 class="fw-lighter">{{ $book->judul }}</h2>
+                                            <p class="pb-4 text-secondary">{{ substr($book->sinopsis, 0 , 150) }}....<a href="/Readteracy/detail/guest/{{ $book->id }}" class="link-fancy link-fancy-light">baca kelanjutannya disini</a></p>
+                                            <a href="/Readteracy/detail/guest/{{ $book->id }}" class="link-fancy link-fancy-light">Read more</a>
                                         </div>
                                     </div>
                                 </div>
@@ -192,12 +134,9 @@
                                         <img src="/img/buku/{{ $book->image }}" width="582" height="390" alt="..."
                                             class="img-fluid rounded-5 no-bottom-radius" loading="lazy">
                                         <div class="p-5">
-                                            <h2 class="fw-lighter">Ipsum dolor est</h2>
-                                            <p class="pb-4 text-secondary">
-                                                Lorem ipsum dolor sit amet, consetetur sadipscing
-                                                elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                                                erat.</p>
-                                            <a href="#" class="link-fancy link-fancy-light">Read more</a>
+                                            <h2 class="fw-lighter">{{ $book->judul }}</h2>
+                                            <p class="pb-4 text-secondary">{{ substr($book->sinopsis, 0 , 150) }}....</p>
+                                            <a href="/Readteracy/detail/guest/{{ $book->id }}" class="link-fancy link-fancy-light">Read more</a>
                                         </div>
                                     </div>
                                 </div>
@@ -233,6 +172,4 @@
         @include('partials.footer')
 
     </body>
-    </html>
-
 @endsection

@@ -1,11 +1,6 @@
 @include('partials.navbarAuth')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<main>
     <title>Readteracy - Add Book Admin / Petugas</title>
     <link rel="stylesheet" href="/css/addForm.css">
     <style>
@@ -76,16 +71,10 @@
 
                     <textarea name="isi_buku" id="isi_buku">Tulis ceritamu</textarea>
 
-                    {{-- <div class="col">
-                        <span class="form-text">Image</span>
-                        <input type="file" class="form-control mt-2" name="image" id="image" required multiple>
-                    </div> --}}
-
                     <div class="text-center border bg-dark rounded-5">
                         <img id="img" src="https://kodfun.github.io/Reels/ImagePreview/choose.png" height="200">
                         <input type="file" class="form-control mt-2" name="image" id="input" required multiple>
                     </div>
-
 
                     <button class="enter" type="submit">Enter</button>
                 </div>
@@ -109,7 +98,8 @@
     if (input.files[0]) img.src = URL.createObjectURL(input.files[0]);
     };
 </script>
-</html>
 
 
 @include('partials.footer')
+</main>
+

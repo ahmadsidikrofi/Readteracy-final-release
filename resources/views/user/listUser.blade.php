@@ -26,10 +26,7 @@
             <div class="container">
                 <div class="row py-5 text-center">
                     <div class="col">
-                        <h1>Genre List</h1>
-                        <div class="py-5 d-flex justify-content-end">
-                            <a href="/Readteracy/addGenre/page" class="btn btn-primary">Tambah Genre</a>
-                        </div>
+                        <h1>User List</h1>
 
                         <div class="justify-content-start">
                             @if (session('berhasilEdit_genre'))
@@ -48,25 +45,37 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
+            <div class="container mb-5">
                 <table id="myTable" class="display">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Genre</th>
+                            <th>Nama User</th>
+                            <th>Email</th>
+                            <th>Role</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ( $genreList as $genre )
+                        <?php $x = 1 ?>
+                        @foreach ( $users as $user )
                         <tr>
-                            <td>{{ $genre->id }}</td>
-                            <td>{{ $genre->nama_genre }}</td>
+                            <td>{{ $x }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
                             <td>
-                                <a href="/Readteracy/editGenre/{{ $genre->slug }}" class="btn btn-success">Edit Genre</a>
-                                <a href="/Readteracy/delete/{{ $genre->slug }}/genre" class="btn btn-danger">Hapus Genre</a>
+                                @if ( $user->role === 0 )
+                                    <p>Peminjam buku</p>
+                                @elseif ( $user->role === 2 )
+                                    <p>Petugas buku</p>
+                                @endif
+                            </td>
+                            <td>
+                                <a href="/Readteracy/see-profile/{{ $user->id }}" class="btn btn-success">Lihat profile</a>
+                                <a href="/Readteracy/delete/{{ $user->id }}/user" class="btn btn-danger">Banned user</a>
                             </td>
                         </tr>
+                        <?php $x++ ?>
                         @endforeach
                     </tbody>
                 </table>

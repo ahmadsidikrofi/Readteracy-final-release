@@ -39,6 +39,7 @@
             <div class="card py-vh-3 rounded-5 shadow">
                 <div class="card-body">
                     <h3 class="card-title text-center">{{ $isi_buku->judul }}</h3>
+                    <p class="text-center">{{ $isi_buku->genre()->pluck('nama_genre')->implode(', ') }}</p>
                 </div>
                 <div class="row justify-content-center mx-3">
                     <div class="col-lg-7 col-md-7 col-sm-10 ">
@@ -56,10 +57,6 @@
                 <div class="row mx-3">
                     <div id="disqus_thread"></div>
                     <script>
-                        /**
-                        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-
                         var disqus_config = function () {
                         this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
                         this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
@@ -72,22 +69,10 @@
                         (d.head || d.body).appendChild(s);
                         })();
                     </script>
-
-                </div>
-
-                <div class="row mx-3 mt-5">
-                    <h4 class="fw-bold">Related Books</h4>
-                    @foreach ( $related_books as $book )
-                        <div class="col-sm">
-                            <p>Nama : {{ $book->judul }}</p>
-                            <p>Genre: {{ $book->genre()->pluck('nama_genre')->implode(', ') }}</p>
-                            <p>Sinopsis: {{ $book->sinopsis }}</p>
-                        </div>
-                    @endforeach
                 </div>
             </div>
             <div class="row mx-3 mt-4 mb-5">
-                <h4 class="fw-bold mb-3">Related Books</h4>
+                <h4 class="fw-bold mb-3">Mungkin kamu suka</h4>
                 @foreach ( $related_books as $book )
                 <div class="card-related-book mx-4" style="background-image: url(/img/buku/{{ $book->image }})">
                     <div class="textBox">
