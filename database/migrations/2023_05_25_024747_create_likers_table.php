@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tmp_image', function (Blueprint $table) {
+        Schema::create('likers', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
-            $table->string('folder')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('book_id')->nullable();
+            $table->boolean('is_like')->default(false);
+            $table->timestamp('book_user_likes');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tmp_image');
+        Schema::dropIfExists('likers');
     }
 };

@@ -12,11 +12,6 @@ class PeminjamanBuku extends Model
     protected $table = 'peminjaman_buku';
     protected $guarded = ["actual_return_date"];
 
-    // public function genrePeminjaman(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(Genre::class, "book_genre", "book_id", "genre_id");
-    // }
-
     public function genre(): BelongsToMany
     {
         return $this->belongsToMany(Genre::class, "book_genre", "book_id", "genre_id");

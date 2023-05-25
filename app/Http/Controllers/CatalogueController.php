@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Genre;
+use App\Models\Likers;
 use Illuminate\Http\Request;
 use App\Models\BooksCatalogue;
 use App\Models\PeminjamanBuku;
@@ -83,7 +84,8 @@ class CatalogueController extends Controller
         $detail_book = BooksCatalogue::find($id);
         $peminjamanBuku = PeminjamanBuku::where('user_id', $user->id)
         ->where('book_id', $detail_book->id)->orderByDesc('id')->first();
-        return view('books.detailBook', compact(['detail_book', 'peminjamanBuku', 'genre']));
+        $like = $detail_book->likers()->count();
+        return view('books.detailBook', compact(['detail_book', 'peminjamanBuku', 'genre', 'like']));
     }
 
     public function detailBook_page_guest( $id )

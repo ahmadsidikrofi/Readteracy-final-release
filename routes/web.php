@@ -8,6 +8,7 @@ use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\HistoricalController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\PeminjamanBukuController;
 use App\Http\Controllers\UsersController;
@@ -77,16 +78,14 @@ Route::middleware('what_role')->group(function() {
 });
 // Route ini adalah ketika setelah mengembalikan buku
 Route::get('/Readteracy/detail/buku/{id}', [CatalogueController::class, "detailBook_page_after_return"]);
-
+// Like book
+Route::post('/Readteracy/like-book/{id}', [LikeController::class, "like_book"]);
 
 // Peminjaman Buku / history/libary
 Route::get('/Readteracy/borrowed', [PeminjamanBukuController::class, "viewPage_pinjamBuku"]);
 Route::post('/Readteracy/borrow/{id}/non-fisik', [PeminjamanBukuController::class, "pinjam_buku_nonFisik"]);
 Route::post('/Readteracy/borrow/{id}/fisik', [PeminjamanBukuController::class, "pinjam_buku_fisik"])->name("pinjamBukuFisik");
 Route::post('/Readteracy/return-book', [PeminjamanBukuController::class, "return_book"]);
-
-// Comments
-Route::post('/Readteracy/comment/book/{id}', [CommentController::class, "add_comment"]);
 
 
 // Data Buku (Petugas buku)

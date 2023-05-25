@@ -31,6 +31,11 @@ class BooksCatalogue extends Model
         return $this->belongsToMany(Genre::class, "book_genre", "book_id", "genre_id");
     }
 
+    public function likers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'book_user_likes', 'book_id', 'user_id')->withTimestamps();
+    }
+
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters["search"] ?? false, function( $query, $search ) {
