@@ -83,10 +83,10 @@
                         <div id="dropArea">
                             @if ($book_edit->image === NULL)
                                 <img id="img" src="https://kodfun.github.io/Reels/ImagePreview/choose.png" height="200">
-                                <input type="file" class="form-control mt-2" name="image" id="input" required multiple>
+                                <input type="file" class="form-control mt-2" name="image" id="input" multiple>
                             @else
                                 <img id="img" src="/img/buku/{{ $book_edit->image }}" height="200" alt="">
-                                <input type="file" class="form-control mt-2" name="image" id="input" required multiple>
+                                <input type="file" class="form-control mt-2" name="image" id="input" multiple>
                             @endif
                         </div>
                     </div>

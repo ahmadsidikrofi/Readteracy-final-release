@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('book_user_likes', function (Blueprint $table) {
+        Schema::create('book_user_dislikes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('book_id');
-            $table->boolean('is_like')->default(false);
             $table->boolean('is_dislike')->default(false);
             $table->timestamps();
-            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            // $table->foreign('book_id')->references('id')->on('books_catalogue')->onDelete('cascade');
         });
     }
 
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('book_user_likes');
+        Schema::dropIfExists('book_user_dislikes');
     }
 };

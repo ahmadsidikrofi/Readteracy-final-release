@@ -23,6 +23,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(BooksCatalogue::class, 'book_user_likes', 'user_id', 'book_id')->withTimestamps();
     }
+    public function dislikers(): BelongsToMany
+    {
+        return $this->belongsToMany(BooksCatalogue::class, 'book_user_dislikes', 'user_id', 'book_id')->withTimestamps();
+    }
 
     /**
      * The attributes that are mass assignable.

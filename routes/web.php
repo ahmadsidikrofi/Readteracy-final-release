@@ -78,8 +78,13 @@ Route::middleware('what_role')->group(function() {
 });
 // Route ini adalah ketika setelah mengembalikan buku
 Route::get('/Readteracy/detail/buku/{id}', [CatalogueController::class, "detailBook_page_after_return"]);
-// Like book
-Route::post('/Readteracy/like-book/{id}', [LikeController::class, "like_book"]);
+
+// Like-Dislike Book
+Route::post('/Readteracy/like-dislike-book/{id}', [LikeController::class, "like_dislike"]);
+// // Like book
+// Route::post('/Readteracy/like-book/{id}', [LikeController::class, "like_book"]);
+// // Dislike book
+// Route::post('/Readteracy/dislike-book/{id}', [LikeController::class, "dislike_book"]);
 
 // Peminjaman Buku / history/libary
 Route::get('/Readteracy/borrowed', [PeminjamanBukuController::class, "viewPage_pinjamBuku"]);

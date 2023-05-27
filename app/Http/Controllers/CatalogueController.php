@@ -85,7 +85,8 @@ class CatalogueController extends Controller
         $peminjamanBuku = PeminjamanBuku::where('user_id', $user->id)
         ->where('book_id', $detail_book->id)->orderByDesc('id')->first();
         $like = $detail_book->likers()->count();
-        return view('books.detailBook', compact(['detail_book', 'peminjamanBuku', 'genre', 'like']));
+        $dislike = $detail_book->dislikers()->count();
+        return view('books.detailBook', compact(['detail_book', 'peminjamanBuku', 'genre', 'like', 'dislike']));
     }
 
     public function detailBook_page_guest( $id )
