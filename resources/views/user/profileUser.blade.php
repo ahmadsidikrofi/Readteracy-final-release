@@ -71,55 +71,30 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="card mb-4" data-aos="zoom-in-right">
-                            <form action="/Readteracy/account/{{ $userProfile->id }}/profile-picture" method="post" enctype="multipart/form-data">
-                                @csrf
-                                <div class="card-body text-center">
-                                    @if ($userProfile->image == null)
-                                        <div class="img-wrap">
-                                            <span class="close">
-                                                <a href="/Readteracy/account/{{ $userProfile->id }}/delete/profile-picture">
-                                                    <i class="bi bi-trash3"
-                                                        style="font-size: 1.5rem; color: rgb(255, 255, 255);"></i>
-                                                </a>
-                                            </span>
-                                            <img src="https://ui-avatars.com/api/?name={{ urlencode($userProfile->name) }}&background=random&color=28a745"
-                                                alt="avatar" class="rounded-circle img-fluid" style="width: 150px;"
-                                                id="image_preview">
-                                        </div>
-                                    @else
-                                        <div class="img-wrap">
-                                            <span class="close">
-                                                <a href="/Readteracy/account/{{ $userProfile->id }}/delete/profile-picture">
-                                                    <i class="bi bi-trash3"
-                                                        style="font-size: 1.5rem; color: rgb(255, 255, 255);"></i>
-                                                </a>
-                                            </span>
-                                            <img src="/img/profile/{{ $userProfile->image }}" alt="avatar"
-                                                class="rounded-circle img-fluid" style="width: 180px; height: 180px"
-                                                id="image_preview">
-                                        </div>
-                                        {{-- <img src="/img/profile/{{ $userProfile->image }}"
-                                        alt="avatar" class="rounded-circle img-fluid" style="width: 150px; height: 150px" id="image_preview"> --}}
-                                    @endif
-                                    <div class="col mt-3">
-                                        <label for="image" class="btn btn-dark"><i class="fa-solid fa-upload"></i> Pilih gambar</label>
-                                        <input type="file" name="image" class="form-control" id="image"
-                                            style="display: none;">
-                                        <button class="btn btn-primary mt-3" name="updatePic">Ubah Gambar</button>
-                                        {{-- <a class="btn btn-danger mt-3" href="/Readteracy/account/{{ $userProfile->id }}/delete/profile-picture">Hapus Foto Profile</a> --}}
-                                        <hr>
+                            <div class="card-body text-center">
+                                @if ($userProfile->image == null)
+                                    <div class="img-wrap">
+                                        <img src="https://ui-avatars.com/api/?name={{ urlencode($userProfile->name) }}&background=random&color=28a745"
+                                            alt="avatar" class="rounded-circle img-fluid" style="width: 150px;"
+                                            id="image_preview">
                                     </div>
-                                    <h5 class="my-3">{{ $userProfile->name }}</h5>
-                                    <p class="text-muted mb-1">
-                                        @if ($userProfile->role == 2)
-                                            Petugas Perpustakaan
-                                        @else
-                                            Peminjam Buku
-                                        @endif
-                                    </p>
-                                    <p class="text-muted mb-4">{{ $userProfile->alamat }}</p>
-                                </div>
-                            </form>
+                                @else
+                                    <div class="img-wrap">
+                                        <img src="/img/profile/{{ $userProfile->image }}" alt="avatar"
+                                            class="rounded-circle img-fluid" style="width: 180px; height: 180px"
+                                            id="image_preview">
+                                    </div>
+                                @endif
+                                <h5 class="my-3">{{ $userProfile->name }}</h5>
+                                <p class="text-muted mb-1">
+                                    @if ($userProfile->role == 2)
+                                        Petugas Perpustakaan
+                                    @else
+                                        Peminjam Buku
+                                    @endif
+                                </p>
+                                <p class="text-muted mb-4">{{ $userProfile->alamat }}</p>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-8" data-aos="zoom-in-left">

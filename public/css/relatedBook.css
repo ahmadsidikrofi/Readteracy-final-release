@@ -36,9 +36,9 @@
     opacity: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     justify-content: center;
-    gap: 15px;
+    gap: 5px;
     transition: 0.2s ease-in-out;
     z-index: 2;
     position: relative;
@@ -85,22 +85,6 @@
     color: #ffffff;
     animation: anim 3s infinite;
 }
-
-/* .card-related-book:hover.light {
-    color: #000000;
-}
-
-.card-related-book:hover.light::before {
-    filter: blur(10px) brightness(200%);
-}
-
-.card-related-book:hover.light > .textBox {
-    opacity: 1;
-}
-
-.card-related-book:hover.light > .textBox::after {
-    opacity: 0;
-} */
 
 @keyframes anim {
     0% {

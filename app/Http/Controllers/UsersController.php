@@ -40,4 +40,22 @@ class UsersController extends Controller
 
         return redirect()->back();
     }
+
+    public function update_roleMember( Request $request, $id )
+    {
+        $role_member = $request->input('role');
+        DB::table('users')
+        ->where('id', $id)
+        ->update([
+            'role' => $role_member,
+        ]);
+        return redirect()->back();
+    }
+
+    public function bann_member( $id )
+    {
+        $banned_member = User::find($id);
+        $banned_member->delete();
+        return redirect()->back()->with('bannedMember', 'Member berhasil di banned 🤯');
+    }
 }

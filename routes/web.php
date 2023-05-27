@@ -59,6 +59,8 @@ Route::get('/Readteracy/delete/{slug}/genre', [GenreController::class, "delete_g
 Route::get('/Readteracy/admin/all-users', [UsersController::class, "listUser_page"]);
 Route::get('/Readteracy/see-profile/{id}', [UsersController::class, "profileUser_page"]);
 Route::put('/Readteracy/admin/update/member/{id}', [UsersController::class, "update_profileMember"]);
+Route::put('/Readteracy/admin/update-role/{id}', [UsersController::class, "update_roleMember"]);
+Route::get('/Readteracy/delete/{id}/user', [UsersController::class, "bann_member"]);
 
 Route::get('Readteracy/account/updateProfile', [AuthController::class, "update_profilePic2"])->name('updateProfilePicture');
 
@@ -77,14 +79,10 @@ Route::middleware('what_role')->group(function() {
     Route::get('/Readteracy/delete-book/{slug}', [CatalogueController::class, "destroy"]);
 });
 // Route ini adalah ketika setelah mengembalikan buku
-Route::get('/Readteracy/detail/buku/{id}', [CatalogueController::class, "detailBook_page_after_return"]);
+Route::get('/Readteracy/detail/buku/{id}', [CatalogueController::class, "detailBook_page_userAuth"]);
 
 // Like-Dislike Book
 Route::post('/Readteracy/like-dislike-book/{id}', [LikeController::class, "like_dislike"]);
-// // Like book
-// Route::post('/Readteracy/like-book/{id}', [LikeController::class, "like_book"]);
-// // Dislike book
-// Route::post('/Readteracy/dislike-book/{id}', [LikeController::class, "dislike_book"]);
 
 // Peminjaman Buku / history/libary
 Route::get('/Readteracy/borrowed', [PeminjamanBukuController::class, "viewPage_pinjamBuku"]);

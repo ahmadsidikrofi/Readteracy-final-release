@@ -28,6 +28,7 @@ class LikeController extends Controller
                     ['user_id' => $user->id, 'book_id' => $id],
                     ['is_like' => true],
                 );
+                return redirect()->back()->with('is_like','Kamu suka bukunya 😍');
             }
         }
 
@@ -45,6 +46,7 @@ class LikeController extends Controller
                     ['user_id' => $user->id, 'book_id' => $id],
                     ['is_dislike' => true],
                 );
+                return redirect()->back()->with('is_dislike','Kenapa gasuka bukunya? 😠');
             }
         }
         return redirect()->back();

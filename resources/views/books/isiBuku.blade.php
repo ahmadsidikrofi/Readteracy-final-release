@@ -77,6 +77,7 @@
                 <div class="card-related-book mx-4" style="background-image: url(/img/buku/{{ $book->image }})">
                     <div class="textBox">
                       <p class="text head">{{ $book->judul }}</p>
+                      <p class="text head">{{ $book->nama_penulis }}</p>
                       <p class="text price">{{ $book->genre()->pluck('nama_genre')->implode(', ') }}</p>
                       <a class="fw-bold btn btn-outline-light" href="/Readteracy/detail/buku/{{ $book->id }}">Lihat Aku</a>
                     </div>
@@ -107,7 +108,7 @@
     <!-- Tambahkan script jQuery sebelum script berikut -->
     <script>
         $(document).ready(function () {
-            var startPosition = 201;
+            var startPosition = 200;
 
             function loadNextPage() {
                 $.ajax({

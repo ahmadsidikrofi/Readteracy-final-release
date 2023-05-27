@@ -133,6 +133,6 @@ class CatalogueController extends Controller
         $detail_book = BooksCatalogue::find($id);
         $peminjamanBuku = PeminjamanBuku::where('user_id', $user->id)
         ->where('book_id', $detail_book->id)->orderByDesc('id')->first();
-        return view('books.detailBook', compact(['detail_book', 'peminjamanBuku', 'genre']));
+        return view('books.detailBook', compact(['detail_book', 'peminjamanBuku', 'genre', 'like', 'dislike']));
     }
 }
