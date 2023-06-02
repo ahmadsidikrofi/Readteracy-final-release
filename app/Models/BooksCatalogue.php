@@ -48,7 +48,6 @@ class BooksCatalogue extends Model
             ->orWhere('isi_buku', 'like', '%' . $search . '%')
             ->orWhere('sinopsis', 'like', '%'. $search . '%');
         });
-
         return $query;
     }
 }

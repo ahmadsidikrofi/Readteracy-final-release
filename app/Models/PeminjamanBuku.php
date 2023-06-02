@@ -16,4 +16,9 @@ class PeminjamanBuku extends Model
     {
         return $this->belongsToMany(Genre::class, "book_genre", "book_id", "genre_id");
     }
+
+    public function book()
+    {
+        return $this->belongsTo(BooksCatalogue::class);
+    }
 }

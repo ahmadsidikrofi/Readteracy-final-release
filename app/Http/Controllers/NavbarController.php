@@ -32,4 +32,10 @@ class NavbarController extends Controller
         $genre = Genre::all();
         return view('notification',compact(["genre"]));
     }
+
+    public function viewPage_about()
+    {
+        $genre = Genre::all();
+        return view('aboutUs', compact('genre'));
+    }
 }

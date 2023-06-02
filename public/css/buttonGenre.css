@@ -1,55 +1,42 @@
-/* .buttonGenre {
-    background-color: #eee;
+.btn {
+    background-color: #2B3044;
+}
+
+.rainbow-hover {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ff7576;
+    background-color: #2B3044;
     border: none;
-    padding: 1rem;
-    font-size: 20px;
-    border-radius: 1rem;
-    color: rgb(65, 65, 65);
-    box-shadow: 0 0.4rem #dfd9d9;
+    outline: none;
     cursor: pointer;
-    text-decoration: none;
+    padding: 12px 24px;
+    position: relative;
+    line-height: 24px;
+    border-radius: 9px;
+    box-shadow: 0px 1px 2px #2B3044,
+        0px 4px 16px #2B3044;
+    transform-style: preserve-3d;
+    transform: scale(var(--s, 1)) perspective(600px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    perspective: 600px;
+    transition: transform 0.1s;
 }
 
-.buttonGenre:active {
-    color: white;
-    box-shadow: 0 0.2rem #dfd9d9;
-    transform: translateY(0.2rem);
+.sp {
+    background: linear-gradient(90deg,
+            #866ee7,
+            #ea60da,
+            #ed8f57,
+            #fbd41d,
+            #2cca91);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    display: block;
 }
 
-.buttonGenre:hover:not(:disabled) {
-    background: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    text-shadow: 0 0.1rem #bcb4b4;
-}
-
-.buttonGenre:disabled {
-    cursor: auto;
-    color: grey;
-} */
-
-.buttonGenre {
-    padding: 17px 40px;
-    border-radius: 10px;
-    border: 0;
-    background-color: rgb(78, 78, 78);
-    letter-spacing: 1.5px;
-    font-size: 15px;
-    transition: all .3s ease;
-    box-shadow: rgb(65, 65, 65) 0px 10px 0px 0px;
-    color: hsl(0, 0%, 100%);
-    text-decoration: none;
-}
-
-.buttonGenre:hover {
-    box-shadow: rgb(184, 184, 184) 0px 7px 0px 0px;
-    color: aliceblue;
-}
-
-.buttonGenre:active {
-    background-color: rgb(204, 204, 204);
-    /*50, 168, 80*/
-    box-shadow: rgb(194, 194, 194) 0px 0px 0px 0px;
-    transform: translateY(5px);
-    transition: 200ms;
-    color: aliceblue;
+.rainbow-hover:active {
+    transition: 0.3s;
+    transform: scale(0.93);
 }

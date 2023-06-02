@@ -126,13 +126,20 @@
                         <div class="card mb-4 mb-md-0" data-aos="zoom-in-up">
                             <div class="card-body">
                                 <p class="mb-4"><span class="text-primary font-italic me-1">Mini Library</span>of {{ Auth::user()->name }}</p>
+                                @if ($peminjaman->isEmpty())
+                                    <div class="mb-0">
+                                        <h6 class="text-danger">Kamu belum meminjam buku apapun nih</h6>
+                                        <img data-aos="fade-up" data-aos-duration="70000" src="/img/emptyBook.gif" width="60px" height="60" alt="">
+                                        <img data-aos="fade-up" data-aos-duration="1000000" src="/img/emptyBook.gif" width="130px" height="120" alt="">
+                                        <img data-aos="fade-up" data-aos-duration="900000" src="/img/emptyBook.gif" width="90px" height="80" alt="">
+                                    </div>
+                                @else
                                     @foreach ($peminjaman as $borrow)
                                         <div class="row mb-2">
                                             <p class="mb-1 fw-bold">{{ $borrow->judul }}</p>
                                             <div class="col-xl-3">
                                                 <img src="/img/buku/{{ $borrow->image }}" width="80px" alt="">
                                             </div>
-                                            {{-- "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates vitae" --}}
                                             <div class="col-xl-7">
                                                 <?php
                                                 $sinopsis = $borrow->sinopsis;
@@ -155,8 +162,9 @@
                                             </form>
                                         </div>
                                         <hr>
-                                    @endforeach
-                                    <span>click here to see more <a href="#">my libraries</a></span>
+                                        @endforeach
+                                        <span>click here to see more <a href="/Readteracy/history/borrowed">my libraries</a></span>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -231,12 +239,6 @@
                                     </div>
 
                                     <hr>
-                                    @if (Auth::user()->role === 2)
-                                        <a href="/Readteracy/data-peminjaman" class="btn btn-primary btn-lg mb-3">Data peminjaman buku</a>
-                                        <a href="/Readteracy/genre/genreList" class="btn btn-primary btn-lg mb-3">Tambah Genre</a>
-                                    @elseif (Auth::user()->role === 1)
-                                        <a href="/Readteracy/admin/all-users" class="btn btn-primary btn-lg mb-3">All User</a>
-                                    @endif
                                     <div class="row">
                                         <button type="submit" name="updateProfile" class="btn btn-dark">Update Profile</button>
                                     </div>
@@ -250,6 +252,12 @@
                                     <div class="card-body">
                                         <p class="mb-4"><span class="text-primary font-italic me-1">Readteracy</span> Info
                                         </p>
+                                        @if (Auth::user()->role === 2)
+                                            <a href="/Readteracy/data-peminjaman" class="btn btn-primary btn-lg mb-3 col-sm-5">Data peminjaman buku</a>
+                                            <a href="/Readteracy/genre/genreList" class="btn btn-primary btn-lg mb-3 col-sm-6">Tambah Genre</a>
+                                        @elseif (Auth::user()->role === 1)
+                                            <a href="/Readteracy/admin/all-users" class="btn btn-primary btn-lg mb-3 w-100">All User</a>
+                                        @endif
                                         <div class="row">
                                             <div class="col">
                                                 <div class="card mt-3 border shadow" style="width: 18rem;">

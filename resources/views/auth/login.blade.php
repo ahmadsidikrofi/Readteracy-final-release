@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="/css/theme.min.css">
     <style>
         .bg {
-            background-image: url('/img/auth2.jpg');
-            background-position: center;
+            background-image: url('/img/login.jpg');
+            background-position: 0rem 0rem;
             background-repeat: no-repeat;
             background-size: cover;
         }

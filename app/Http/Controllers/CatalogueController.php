@@ -82,11 +82,15 @@ class CatalogueController extends Controller
 
         $user = auth()->user();
         $detail_book = BooksCatalogue::find($id);
-        $peminjamanBuku = PeminjamanBuku::where('user_id', $user->id)
-        ->where('book_id', $detail_book->id)->orderByDesc('id')->first();
-        $like = $detail_book->likers()->count();
-        $dislike = $detail_book->dislikers()->count();
-        return view('books.detailBook', compact(['detail_book', 'peminjamanBuku', 'genre', 'like', 'dislike']));
+        if ($detail_book) {
+            $peminjamanBuku = PeminjamanBuku::where('user_id', $user->id)
+            ->where('book_id', $detail_book->id)->orderByDesc('id')->first();
+            $like = $detail_book->likers()->count();
+            $dislike = $detail_book->dislikers()->count();
+            return view('books.detailBook', compact(['detail_book', 'peminjamanBuku', 'genre', 'like', 'dislike']));
+        } else {
+            return redirect()->back()->with('error', 'maaf buku sudah tidak ada');
+        }
     }
 
     public function detailBook_page_guest( $id )
@@ -108,17 +112,19 @@ class CatalogueController extends Controller
         })
         ->where('books_catalogue.id', '!=', $isi_buku->id)
         ->get();
+        $content = $isi_buku->isi_buku;
+        $words = preg_split('/\s+/', $content); // Memisahkan kata-kata dan tanda baca dalam konten
 
-        return view('books.isiBuku', compact(['isi_buku', 'genre', 'related_books']));
+        return view('books.isiBuku', compact(['isi_buku', 'genre', 'related_books', 'words']));
     }
 
     public function getNextPage($id, Request $request)
     {
         $isi_buku = BooksCatalogue::find($id);
         $content = $isi_buku->isi_buku;
-        $perPage = 200; // Ubah sesuai kebutuhan Anda
         $startPosition = $request->query('startPosition', 0);
-        $nextContent = substr($content, $startPosition, $perPage);
+        $words = preg_split('/\s+/', $content); // Memisahkan kata-kata dan tanda baca dalam konten
+        $nextContent = implode(' ', array_slice($words, $startPosition, 50));
 
         return response()->json([
             'content' => $nextContent,

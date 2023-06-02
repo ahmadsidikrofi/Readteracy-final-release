@@ -88,7 +88,7 @@
                                         d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
                                 </svg>
                             </p>
-                            <h3 class="border-top border-secondary pt-5 mt-5">Readteracy emberikan media pembelajaran yang efisien</h3>
+                            <h3 class="border-top border-secondary pt-5 mt-5">Readteracy memberikan media pembelajaran yang efisien</h3>
                             <p class="text-secondary"> Saat para pelajar cenderung mudah bosan dan susah mencari jawaban,
                                 maka buku elektornik ini bisa dimanfaatkan sebagai media pembelajaran yang efisien.
                                 Dengan buku jenis ini, para pelajar akan lebih tertarik untuk mempelajarinya.<br>
@@ -153,16 +153,14 @@
                     <div class="row d-flex align-items-center">
                         <div class="col-12 col-lg-5 text-center text-lg-end" data-aos="zoom-in-right">
                             <span class="h5 text-secondary fw-lighter">What we charge</span>
-                            <h2 class="display-4">You get all our knowledge for one simple price</h2>
+                            <p class="display-4">Lihat semua layanan kami hanya dengan melakukan pembayaran sederhana</p>
                         </div>
                         <div class="col-12 col-lg-7 bg-dark rounded-5 py-vh-3 text-center my-5" data-aos="zoom-in-up">
                             <h2 class="display-huge mb-5">
                                 <span class="fs-4 me-2 fw-light">Rp. </span><span
-                                    class="border-bottom border-5">Free</span><span class="fs-6 fw-light">without tax</span>
+                                    class="border-bottom border-5">Gratis</span><span class="fs-6 fw-light">tanpa pajak</span>
                             </h2>
-                            <p class="lead text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p class="lead text-secondary fs-3">Ikuti kami sebagai membership untuk mendapatkan segala akses premium di <span class="bg-light text-dark rounded px-1 py-1">Readteracy.</span> </p>
                         </div>
                     </div>
                 </div>

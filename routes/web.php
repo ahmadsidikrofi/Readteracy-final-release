@@ -5,9 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\CatalogueController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\EducationController;
-use App\Http\Controllers\HistoricalController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\PeminjamanBukuController;
@@ -85,7 +82,7 @@ Route::get('/Readteracy/detail/buku/{id}', [CatalogueController::class, "detailB
 Route::post('/Readteracy/like-dislike-book/{id}', [LikeController::class, "like_dislike"]);
 
 // Peminjaman Buku / history/libary
-Route::get('/Readteracy/borrowed', [PeminjamanBukuController::class, "viewPage_pinjamBuku"]);
+Route::get('/Readteracy/history/borrowed', [PeminjamanBukuController::class, "viewPage_historyPeminjaman"]);
 Route::post('/Readteracy/borrow/{id}/non-fisik', [PeminjamanBukuController::class, "pinjam_buku_nonFisik"]);
 Route::post('/Readteracy/borrow/{id}/fisik', [PeminjamanBukuController::class, "pinjam_buku_fisik"])->name("pinjamBukuFisik");
 Route::post('/Readteracy/return-book', [PeminjamanBukuController::class, "return_book"]);
@@ -96,4 +93,4 @@ Route::get('/Readteracy/data-peminjaman', [PeminjamanBukuController::class, "vie
 Route::put('/Readteracy/{id}/ubah-status/data-peminjaman', [PeminjamanBukuController::class, "ubah_status"]);
 
 
-
+Route::get('/Readteracy/about-us', [NavbarController::class, "viewPage_about"]);

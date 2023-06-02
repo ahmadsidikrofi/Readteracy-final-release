@@ -140,20 +140,19 @@
                                                             </div>
                                                             <div class="col-sm-2 mt-3 d-flex">
                                                                 @if (Auth::user()->role == 1 || Auth::user()->role == 2)
-                                                                    <div class="mb-3">
-                                                                        <a href="/Readteracy/editBook/{{ $book->slug }}" class="buttonGenre">Edit</a>
+                                                                    <div class="mb-3 mx-3">
+                                                                        <a href="/Readteracy/editBook/{{ $book->slug }}" data-label="Edit" class="btn bg-dark rainbow-hover">
+                                                                            <span class="sp">Edit</span>
+                                                                        </a>
                                                                     </div>
+
                                                                     <hr>
                                                                     <div class="mb-3">
-                                                                        <a href="/Readteracy/delete-book/{{ $book->slug }}" class="buttonGenre deleteBook" data-slug="{{ $book->slug }}">Hapus</a>
+                                                                        <a href="/Readteracy/delete-book/{{ $book->slug }}" data-slug="{{ $book->slug }}" data-label="Hapus" class="deleteBook btn bg-dark rainbow-hover">
+                                                                            <span class="sp">Hapus</span>
+                                                                        </a>
                                                                     </div>
                                                                 @endif
-                                                            </div>
-
-                                                            <div class="mx-3 mt-3">
-                                                                @foreach ( $book->genre as $genre )
-                                                                    {{ $genre->nama_genre }}
-                                                                @endforeach
                                                             </div>
                                                         </div>
                                                     </div>
@@ -346,12 +345,6 @@
                                                                     <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
                                                                 </svg>
                                                             </div>
-                                                        </div>
-
-                                                        <div class="mx-3 mt-3">
-                                                            @foreach ( $book->genre as $genre )
-                                                                {{ $genre->nama_genre }}
-                                                            @endforeach
                                                         </div>
                                                     </div>
                                                 </div>

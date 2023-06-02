@@ -41,10 +41,9 @@
                     <h3 class="card-title text-center">{{ $isi_buku->judul }}</h3>
                     <p class="text-center">{{ $isi_buku->genre()->pluck('nama_genre')->implode(', ') }}</p>
                 </div>
-                <div class="row justify-content-center mx-3">
+                <div class="row justify-content-center">
                     <div class="col-lg-7 col-md-7 col-sm-10 ">
-                        {{-- <p id="book-content" class="mx-auto" data-section="section-1">{!! substr($isi_buku->isi_buku, 0, 200) !!}...</p> --}}
-                        <span id="additional-content">{!! substr($isi_buku->isi_buku, 0, 200) !!}...</span>
+                        <span id="additional-content">{!! implode(' ', array_slice($words, 0, 30)) !!}</span>
                     </div>
                 </div>
                 <div class="row mt-3 mx-3">
@@ -71,17 +70,17 @@
                     </script>
                 </div>
             </div>
-            <div class="row mx-3 mt-4 mb-5">
-                <h4 class="fw-bold mb-3">Mungkin kamu suka</h4>
+            <h4 class="fw-bold mb-3 mx-5 mt-5">Mungkin kamu suka</h4>
+            <div class="row mt-4 mb-5 mx-5">
                 @foreach ( $related_books as $book )
-                <div class="card-related-book mx-4" style="background-image: url(/img/buku/{{ $book->image }})">
-                    <div class="textBox">
-                      <p class="text head">{{ $book->judul }}</p>
-                      <p class="text head">{{ $book->nama_penulis }}</p>
-                      <p class="text price">{{ $book->genre()->pluck('nama_genre')->implode(', ') }}</p>
-                      <a class="fw-bold btn btn-outline-light" href="/Readteracy/detail/buku/{{ $book->id }}">Lihat Aku</a>
+                    <div class="card-related-book mt-3 mx-3" style="background-image: url(/img/buku/{{ $book->image }})">
+                        <div class="textBox">
+                          <p class="text head">{{ $book->judul }}</p>
+                          <p class="text head">{{ $book->nama_penulis }}</p>
+                          <p class="text price">{{ $book->genre()->pluck('nama_genre')->implode(', ') }}</p>
+                          <a class="fw-bold btn btn-outline-light" href="/Readteracy/detail/buku/{{ $book->id }}">Lihat Aku</a>
+                        </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
@@ -99,16 +98,11 @@
             });
         });
     </script>
-    <script>
-        @if (Session::has('komentarNull'))
-            toastr.error('Komentar tidak boleh kosong');
-        @endif
-    </script>
 
     <!-- Tambahkan script jQuery sebelum script berikut -->
     <script>
         $(document).ready(function () {
-            var startPosition = 200;
+            startPosition = 30 * 2; // Mengganti dengan jumlah karakter (bukan kata) yang ingin Anda tampilkan di awal
 
             function loadNextPage() {
                 $.ajax({
@@ -116,8 +110,8 @@
                     method: 'GET',
                     data: { startPosition: startPosition },
                     success: function (response) {
-                        $('#additional-content').append('<span>' + response.content + '</span>');
-                        startPosition += 200;
+                        $('#additional-content').append('<span>' + response.content + '</span> ');
+                        startPosition += 50;
                     },
                     error: function (error) {
                         console.log(error);

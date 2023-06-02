@@ -109,7 +109,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="system.html">
+                        <a class="nav-link" href="/Readteracy/about-us">
                             About
                         </a>
                     </li>
@@ -131,9 +131,9 @@
                             <p>Ubah Password</p>
                             <span>></span>
                         </a>
-                        <a href="/account/login-page" class="sub-menu-link">
+                        <a href="/Readteracy/history/borrowed" class="sub-menu-link">
                             <img src="/img/order.png">
-                            <p>Order</p>
+                            <p>Riwayat</p>
                             <span>></span>
                         </a>
                         <a href="/Readteracy/profile" class="sub-menu-link">

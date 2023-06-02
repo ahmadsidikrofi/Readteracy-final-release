@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/theme.min.css">
     <style>
         .bg {
-            background-image: url('/img/auth2.jpg');
+            background-image: url('/img/register.jpg');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -25,7 +25,6 @@
 
     <div class="h-100 container-fluid">
         <div class="h-100 row d-flex align-items-stretch">
-
             <div class="col-12 col-md-7 col-lg-6 col-xl-5 d-flex align-items-start flex-column px-vw-5">
 
                 <header class="mb-auto py-vh-2 col-12">
@@ -102,6 +101,7 @@
 
             </div> --}}
             <div class="bg col-12 col-md-5 col-lg-6 col-xl-7">
+
             </div>
         </div>
 

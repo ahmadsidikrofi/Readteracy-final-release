@@ -78,9 +78,17 @@
                     </thead>
                     <tbody>
                         @foreach ( $borrowedBooks as $borrowedBook )
+                            @if ($borrowedBook->status === "in stock")
+                            <div class="col-sm-5 fw-bold">
+                                <p class="alert bg-warning text-light">
+                                    <span>Ada {{ $count_inStock }} peminjam yang lagi nunggu konfirmasimu</span>
+                                </p>
+                            </div>
+                            @endif
                             @foreach ( $siPeminjam as $peminjam )
                                 @if ( $peminjam->id === $borrowedBook->user_id )
-                                    <tr>
+                                    <tr class="{{ $borrowedBook->actual_return_date === NULL ? '' :
+                                    ($borrowedBook->return_date < $borrowedBook->actual_return_date ? 'bg-danger text-light' : 'bg-success text-light') }}">
                                         <td>{{ $peminjam->name }}</td>
                                         <td>{{ $borrowedBook->judul }}</td>
                                         <td>{{ $peminjam->no_hp }}</td>

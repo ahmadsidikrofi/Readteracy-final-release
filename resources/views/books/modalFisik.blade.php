@@ -61,7 +61,7 @@
                                     <ul class="list-group">
                                         <li class="list-group-item">
                                             <label for="rent_date"><p class="fw-bold">Tanggal Sewa</p></label>
-                                            <input type="date" name="rent_date" class="form-control">
+                                            <input type="date" name="rent_date" id="date_picker" class="form-control">
                                             <span class="error-message" style="color: red; display: none;">Tanggal sewa harus diisi.</span>
                                         </li>
                                     </ul>
@@ -94,6 +94,7 @@
     integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/js/toastr.js"></script>
+
     <script>
         @if (Session::has('rent_date_null'))
             toastr.success('Harap mengisi tanggal peminjaman')
@@ -101,15 +102,14 @@
         @if (Session::has('bukuFisik_terpinjam'))
             toastr.success('Selamat membaca 🥰')
         @endif
+    </script>
 
-        // $('form').on('submit', function(e) {
-        //     var rent_date = $('input[name="rent_date"]').val();
-        //     if (!rent_date) {
-        //         e.preventDefault();
-        //         @if (Session::has('rent_date_null'))
-        //             toastr.success('Harap mengisi tanggal peminjaman buku')
-        //         @endif
-        //         $('span.error-message').css('display', 'block');
-        //     }
-        // });
+    <script>
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        $('#date_picker').attr('min',today);
     </script>

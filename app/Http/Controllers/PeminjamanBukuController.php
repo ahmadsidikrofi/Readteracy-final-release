@@ -15,11 +15,12 @@ use Illuminate\Support\Facades\Redirect;
 
 class PeminjamanBukuController extends Controller
 {
-    public function viewPage_pinjamBuku()
+    public function viewPage_historyPeminjaman()
     {
+        $genre = Genre::all();
         $user = auth()->user();
-        $peminjaman = PeminjamanBuku::with('genreHistorical')->where('user_id', $user->id)->latest()->get();
-        return view('library', compact(['peminjaman', 'count_sedangDipinjam']));
+        $peminjaman = PeminjamanBuku::with('book')->where('user_id', $user->id)->latest()->get();
+        return view('history', compact(['peminjaman', 'genre']));
     }
 
     public function pinjam_buku_nonFisik( Request $request )
@@ -58,8 +59,8 @@ class PeminjamanBukuController extends Controller
 
     public function pinjam_buku_fisik( Request $request )
     {
-        $return_date = $request["return_date"] = Carbon::now()->addDay(3)->locale('id')->toDateString();
-        // $book = genreHistorical::findOrFail($request->book_id)->only('status');
+        $rent_date = Carbon::parse($request->rent_date);
+        $return_date = $request["return_date"] = $rent_date->addDay(3)->toDateString();
 
         try {
             $tipe = $request->input("tipe");
@@ -117,9 +118,4 @@ class PeminjamanBukuController extends Controller
 
         return redirect()->back();
     }
-    // $book = PeminjamanBuku::findOrFail($request->book_id);
-    // $book->status = "sedang dipinjam";
-    // $book = genreHistorical::findOrFail($request->book_id);
-    // $book->status = "sedang dipinjam";
-    // $book->save();
 }

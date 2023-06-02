@@ -85,9 +85,8 @@
                                     @endif
                                 </form>
 
-                                {{-- $detail_book->status == "in stock" && auth()->check() && auth()->user()->peminjamanBuku()->where('book_id', $detail_book->id)->exists() --}}
                                 @if ($peminjamanBuku && $peminjamanBuku->status == "sedang dipinjam")
-                                    <a href="/Readteracy/baca-buku/{{ $detail_book->id }}" class="btn btn-dark mt-3 mx-3">Ready to read</a>
+                                    <a href="/Readteracy/baca-buku/{{ $detail_book->id }}" class="btn bg-dark text-light mt-3 mx-3">Ready to read</a>
                                 @elseif ($detail_book->status == "in stock")
                                     <button class="btn bg-dark text-white dropdown-toggle mt-3 mx-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Want to read
@@ -119,8 +118,21 @@
                                         </div>
                                         <li><i class="fa fa-check text-success"></i>Pengembalian : Tidak ada</li>
                                     @else
-                                        <div class="rounded-3 border bg-success text-light px-2 py-1 col-sm-6 col-lg-6">
-                                            <li><i class="fa fa-check"></i>Status : {{ $peminjamanBuku->status }}</li>
+                                        @if ($peminjamanBuku->status === "in stock")
+                                            <div class="col-sm-11">
+                                                <p class="alert bg-info text-dark">
+                                                    <span>Admin akan memberi akses buku mu dalam waktu kurang dari 6 jam. Mohon bersabar yaa 🤯</span>
+                                                </p>
+                                            </div>
+                                        @endif
+                                        <div class="rounded-3 border bg-success text-light px-2 py-1 col-sm-8 col-lg-5 {{ $peminjamanBuku->actual_return_date === NULL ? '' :
+                                        ($peminjamanBuku->return_date < $peminjamanBuku->actual_return_date ? 'bg-danger text-light' : 'bg-success text-light') }}">
+                                        <li><i class="fa fa-check"></i>Status : {{ $peminjamanBuku->status }}</li>
+                                            {{-- @if ($peminjamanBuku->status === "in stock")
+                                                <li><i class="fa fa-check"></i>Status : Menuggu persetujuan</li>
+                                            @else
+                                                <li><i class="fa fa-check"></i>Status : {{ $peminjamanBuku->status }}</li>
+                                            @endif --}}
                                         </div>
                                         <li><i class="fa fa-check text-success"></i>Deadline : {{ $peminjamanBuku->return_date }}</li>
                                     @endif
