@@ -121,7 +121,7 @@
                                         @if ($peminjamanBuku->status === "in stock")
                                             <div class="col-sm-11">
                                                 <p class="alert bg-info text-dark">
-                                                    <span>Admin akan memberi akses buku mu dalam waktu kurang dari 6 jam. Mohon bersabar yaa 🤯</span>
+                                                    <span>Tng, secepatnya petugas akan memberi akses buat baca buku mu. Harap bersabar yaa readers🤯</span>
                                                 </p>
                                             </div>
                                         @endif

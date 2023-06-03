@@ -1,10 +1,8 @@
 @extends('partials.navbarAuth')
 
 @section('content')
-
-
+    <link rel="stylesheet" href="/css/toastr.css">
     <body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
-
         <main>
             <div class="position-absolute w-100 h-50 bg-black top-0 start-0"></div>
             <div class="position-relative py-vh-5 bg-cover bg-center"
@@ -189,13 +187,24 @@
         </main>
 
         @include('partials.footer')
-
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="/js/aos.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="/js/toastHome.js"></script>
         <script>
             AOS.init({
                 duration: 800, // values from 0 to 3000, with step 50ms
             });
+        </script>
+
+        <script>
+            @if (Session::has('berhasilLogin'))
+                toastr.info('Selamat datang para pembaca, kamu berhasil masuk📖')
+            @endif
         </script>
         <script>
             let scrollpos = window.scrollY

@@ -98,8 +98,6 @@
                                                 class="rounded-circle img-fluid" style="width: 180px; height: 180px"
                                                 id="image_preview">
                                         </div>
-                                        {{-- <img src="/img/profile/{{ Auth::user()->image }}"
-                                        alt="avatar" class="rounded-circle img-fluid" style="width: 150px; height: 150px" id="image_preview"> --}}
                                     @endif
                                     <div class="col mt-3">
                                         <label for="image" class="btn btn-dark"><i class="fa-solid fa-upload"></i> Pilih gambar</label>
@@ -256,6 +254,7 @@
                                             <a href="/Readteracy/data-peminjaman" class="btn btn-primary btn-lg mb-3 col-sm-5">Data peminjaman buku</a>
                                             <a href="/Readteracy/genre/genreList" class="btn btn-primary btn-lg mb-3 col-sm-6">Tambah Genre</a>
                                         @elseif (Auth::user()->role === 1)
+                                            <a href="/Readteracy/data-peminjaman" class="btn btn-primary btn-lg mb-3 w-100">Data peminjaman buku</a>
                                             <a href="/Readteracy/admin/all-users" class="btn btn-primary btn-lg mb-3 w-100">All User</a>
                                         @endif
                                         <div class="row">

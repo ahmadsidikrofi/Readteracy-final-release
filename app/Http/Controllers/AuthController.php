@@ -44,7 +44,6 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'remember_token' => Str::random(60)
         ]);
-        // dd($daftar);
         return redirect('/')->with('successRegist', 'Akunmu berhasil didaftarkan 😍');
     }
 
@@ -68,14 +67,14 @@ class AuthController extends Controller
             }
 
         } else {
-            return redirect('/account/login-page')->withErrors('wrongAuth', 'Email dan Password tidak sesuai');
+            return redirect('/account/login-page')->with('wrongAuth', 'Email dan Password tidak sesuai');
         }
     }
 
     public function logout()
     {
         AuthLogin::logout();
-        return redirect('/');
+        return redirect('/')->with('logingOut', 'Terimakasih telah membaca, jangan bosan kemari lagi yah 😘');
     }
 
     public function profile_page()

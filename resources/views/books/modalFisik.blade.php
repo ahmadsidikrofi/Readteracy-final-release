@@ -41,7 +41,7 @@
                                             <br>
                                             <li class="list-group-item">{{ Auth::user()->name }}</li>
                                             @if ( Auth::user()->alamat === NULL || Auth::user()->no_hp === NULL )
-                                                <li class="list-group-item"><p class="fw-bold">Silahkan lengkapi data diri</p></li>
+                                                <li class="list-group-item"><p class="fw-bold text-danger">Silahkan lengkapi data diri pada menu profile</p></li>
                                             @else
                                                 <li class="list-group-item">
                                                     <input type="text" placeholder="Alamat" value="{{ Auth::user()->alamat }}" readonly class="form-control">
@@ -72,7 +72,7 @@
                                     <input type="hidden" name="sinopsis" value="{{ $detail_book->sinopsis }}">
                                     <input type="hidden" name="isi_buku" value="{{ $detail_book->isi_buku }}">
                                     @if ( Auth::user()->alamat === NULL || Auth::user()->no_hp === NULL )
-                                        <p class="fw-bold">Harap lengkapi data diri pada profile untuk meminjam buku</p>
+                                        <p class="fw-bold text-danger">Harap lengkapi data diri pada profile untuk meminjam buku</p>
                                     @else
                                         <button type="submit" name="peminjaman" value="peminjaman" class="btn-form w-100 rounded-2 text-center" id="buku-fisik">
                                             KIRIM!

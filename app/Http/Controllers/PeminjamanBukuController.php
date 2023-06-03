@@ -97,12 +97,15 @@ class PeminjamanBukuController extends Controller
     {
         $genre = Genre::all();
         $borrowedBooks = PeminjamanBuku::latest()->get();
+        $notify = PeminjamanBuku::where('status', 'in stock')->first();
+        // apabila ingin mendapatkan data tetapi tidak
+        // bisa pakai get karna collection tidak ada pada instance bisa memakai first
         $siPeminjam = User::all();
         $count_sedangDipinjam = PeminjamanBuku::where('status', 'sedang dipinjam')->count();
         $count_dikembalikan = PeminjamanBuku::where('status', 'dikembalikan')->count();
         $count_inStock = PeminjamanBuku::where('status', 'in stock')->count();
         return view('dataPeminjaman2', compact([
-            'borrowedBooks', "siPeminjam", 'genre',
+            'borrowedBooks', "siPeminjam", 'genre', 'notify',
             'count_sedangDipinjam', 'count_dikembalikan', 'count_inStock'
         ]));
     }

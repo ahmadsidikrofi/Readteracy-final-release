@@ -1,6 +1,7 @@
 @extends('partials.navbarGuest')
 
 @section('content')
+    <link rel="stylesheet" href="/css/toastr.css">
     <body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
         <main>
             <div class="position-absolute w-100 h-50 bg-black top-0 start-0" data-aos="fade"></div>
@@ -166,8 +167,21 @@
                 </div>
             </div>
         </main>
-
         @include('partials.footer')
-
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="/js/toastHome.js"></script>
+        <script>
+            @if (Session::has('successRegist'))
+                toastr.success('Yeay sekarang kamu terdaftar sebagai member Readteracy, berbanggalah😍')
+            @endif
+            @if (Session::has('logingOut'))
+                toastr.warning('Terimakasih telah membaca, jangan bosan kemari lagi yah 😘')
+            @endif
+        </script>
     </body>
 @endsection

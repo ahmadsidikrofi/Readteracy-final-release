@@ -73,18 +73,22 @@
                             <th>Actual Return</th>
                             <th>Tipe</th>
                             <th>Status</th>
+                            @if (Auth::user()->role === 2)
                             <th>Action</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ( $borrowedBooks as $borrowedBook )
-                            @if ($borrowedBook->status === "in stock")
+                        @if (Auth::user()->role === 2)
+                            @if (isset($notify) && $notify->status === "in stock")
                             <div class="col-sm-5 fw-bold">
                                 <p class="alert bg-warning text-light">
                                     <span>Ada {{ $count_inStock }} peminjam yang lagi nunggu konfirmasimu</span>
                                 </p>
                             </div>
                             @endif
+                        @endif
+                        @foreach ( $borrowedBooks as $borrowedBook )
                             @foreach ( $siPeminjam as $peminjam )
                                 @if ( $peminjam->id === $borrowedBook->user_id )
                                     <tr class="{{ $borrowedBook->actual_return_date === NULL ? '' :
@@ -97,6 +101,7 @@
                                         <td>{{ $borrowedBook->actual_return_date }}</td>
                                         <td>{{ $borrowedBook->tipe }}</td>
                                         <td>{{ $borrowedBook->status }}</td>
+                                        @if (Auth::user()->role === 2)
                                         <td>
                                             <form action="/Readteracy/{{ $borrowedBook->id }}/ubah-status/data-peminjaman" method="post">
                                                 @method('put')
@@ -114,6 +119,7 @@
                                                 </div>
                                             </form>
                                         </td>
+                                        @endif
                                     </tr>
                                 @endif
                             @endforeach

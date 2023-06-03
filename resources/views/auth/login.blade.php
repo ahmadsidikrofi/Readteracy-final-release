@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png">
     <title>Login For Readteracy</title>
     <link rel="stylesheet" href="/css/theme.min.css">
+    <link rel="stylesheet" href="/css/toastrAuth.css">
     <style>
         .bg {
             background-image: url('/img/login.jpg');
@@ -99,5 +100,16 @@
 
     </div>
 </body>
-
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/toastAuth.js"></script>
+    <script>
+        @if (Session::has('wrongAuth'))
+            toastr.error('Upss..email atau password kamu ada yang ga bener nih😐')
+        @endif
+    </script>
 </html>

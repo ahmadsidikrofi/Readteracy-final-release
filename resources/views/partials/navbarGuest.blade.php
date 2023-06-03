@@ -97,7 +97,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="system.html">
+                        <a class="nav-link" href="/Readteracy/about-us">
                             Tentang
                         </a>
                     </li>

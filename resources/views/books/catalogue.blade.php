@@ -13,6 +13,22 @@
                     background-repeat: no-repeat;
                     background-size: cover;
                 }
+                [aria-current] .page-link {
+                    background-color: #8b8b8b !important;
+                    color: #eaeaea
+                }
+
+                [rel='prev'], [rel='next'] {
+                    background-color: #0c85d0 !important;
+                }
+
+                .pagination > li :not([rel='prev'],[rel='next'],[aria-current] .page-link) {
+                    background-color: rgb(255, 255, 255) !important;
+                    color: #000000
+                }
+                .page-item.active .page-link:not(:focus):not([aria-current]) {
+                    border-color: rgb(255, 255, 255); /* Ganti dengan warna yang diinginkan */
+                }
             </style>
         @if ($books->isEmpty())
             <body>
@@ -113,9 +129,14 @@
                         <section>
                             <div class="container">
                                 <div class="row">
+                                    <div class="col mt-3">
+                                        <p class="fw-bold">Kamu melihat {{ $total_search }} dari total {{ $total_books }} buku</p>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     @foreach ( $books as $book )
                                     <div class="col">
-                                        <div class="book mt-5 mb-5">
+                                        <div class="book mt-3 mb-5">
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="container mx-auto">
@@ -163,6 +184,11 @@
                                         </div>
                                     </div>
                                     @endforeach
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        {{ $books->links() }}
+                                    </div>
                                 </div>
                             </div>
                         </section>

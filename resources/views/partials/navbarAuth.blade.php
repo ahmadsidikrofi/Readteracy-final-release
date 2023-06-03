@@ -86,7 +86,7 @@
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 list-group list-group-horizontal">
                     <li class="nav-item">
                         <a class="nav-link" href="/Readteracy/catalogue">
-                            Catalogue
+                            Katalog
                         </a>
                     </li>
                     <li class="nav-item">
@@ -110,7 +110,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Readteracy/about-us">
-                            About
+                            Tentang
                         </a>
                     </li>
                 </ul>

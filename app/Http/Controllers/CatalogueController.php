@@ -22,8 +22,10 @@ class CatalogueController extends Controller
                 $query->where('genre.slug', $request->genre);
             });
         }
-        $books = $books->get();
-        return view('books.catalogue', compact(['genre', 'books']));
+        $books = $books->paginate(2);
+        $total_search = $books->count();
+        $total_books = BooksCatalogue::count();
+        return view('books.catalogue', compact(['genre', 'books', 'total_search', 'total_books']));
     }
 
 
